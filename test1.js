@@ -1,9 +1,11 @@
-function outside() {
-  const x = 5;
-  function inside(x) {
-    return x * 2;
+const promise = new Promise(function (resolve, reject) {
+  const a = 1;
+  const b = 2;
+  if (a === b) {
+    resolve();
+  } else {
+    reject();
   }
-  return inside;
-}
+});
 
-console.log(outside()(10));
+promise.then(() => console.log('success')).catch(() => console.log('fail'));
