@@ -1,20 +1,20 @@
-// console.log(this === window);
-// function foo() {
-//   return this;
-// }
+console.log(this === window);
+function foo() {
+  return this;
+}
 
-// console.log(foo() === window);
+console.log(foo() === window);
 
-// const foo = {
-//   langaunge: 'Javascript',
-//   arrowfunction: () => console.log(`${this.langaunge} is simple`),
-//   fooMethod: function () {
-//     console.log(`${this.langaunge} is Awesome!!`);
-//   },
-// };
+const foo = {
+  langaunge: 'Javascript',
+  arrowfunction: () => console.log(`${this.langaunge} is simple`),
+  fooMethod: function () {
+    console.log(`${this.langaunge} is Awesome!!`);
+  },
+};
 
-// foo.arrowfunction();
-// foo.fooMethod();
+foo.arrowfunction();
+foo.fooMethod();
 
 const shape = {
   radius: 10,

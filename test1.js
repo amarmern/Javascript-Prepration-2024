@@ -1,13 +1,13 @@
 const p1 = new Promise((resolve, reject) => {
-  const x = 1;
-  const y = 1;
-  if (x === y) {
-    resolve();
+  let a = 2;
+  let b = 3;
+  if (a === b) {
+    resolve('success');
   } else {
-    reject();
+    reject('fail');
   }
 });
 
-p1.then(() => console.log('success'))
-  .catch(() => console.log('fail'))
-  .finally(() => console.log('excuted this only'));
+p1.then((val) => {
+  console.log(val);
+}).catch((err) => console.log(err));

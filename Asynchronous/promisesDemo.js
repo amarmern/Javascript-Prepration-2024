@@ -1,20 +1,20 @@
-// const myPromise = new Promise((ressole, reject) => {
-//   setTimeout(() => {
-//     console.log('data');
-//   }, 1000);
-// });
+/*const myPromise = new Promise((ressole, reject) => {
+  setTimeout(() => {
+    console.log('data');
+  }, 1000);
+});
 
-// myPromise
-//   .then((value) => `${value} and bar`)
-//   .then((value) => `${value} and bar again`)
-//   .then((value) => `${value} and again`)
-//   .then((value) => `${value} and again`)
-//   .then((value) => {
-//     console.log(value);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+myPromise
+  .then((value) => `${value} and bar`)
+  .then((value) => `${value} and bar again`)
+  .then((value) => `${value} and again`)
+  .then((value) => `${value} and again`)
+  .then((value) => {
+    console.log(value);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 const promiseA = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -48,4 +48,22 @@ const p1 = new Promise((resolve, reject) => {
 
 p1.then(() => console.log('success'))
   .catch(() => console.log('fail'))
-  .finally(() => console.log('excuted this only'));
+  .finally(() => console.log('excuted this only'))
+
+  //or
+
+  const p1 = new Promise((resolve, reject) => {
+  let a = 2;
+  let b = 3;
+  if (a === b) {
+    resolve('success');
+  } else {
+    reject('fail');
+  }
+});
+
+p1.then((val) => {
+  console.log(val);
+}).catch((err) => console.log(err));
+
+  */

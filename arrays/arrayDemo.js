@@ -77,11 +77,10 @@ console.log(months); //[ 'Jan', 'March', 'apr', 'jun', 'May' ]
 //every method
 
 //checks all elements in the array
-const isBelowThreshold = (currentValue) => currentValue < 40;
 
 const array1 = [1, 30, 39, 29, 10, 13];
 
-console.log(array1.every(isBelowThreshold));
+console.log(array1.every((currentValue) => currentValue < 40));
 //Expected output: true
 
 //some method
@@ -90,9 +89,8 @@ console.log(array1.every(isBelowThreshold));
 const array1 = [1, 2, 3, 4, 5];
 
 // Checks whether an element is even
-const even = (element) => element % 2 === 0;
 
-console.log(array1.some(even));
+console.log(array1.some((element) => element % 2 === 0));
 //Expected output: true
 
 //custom array
@@ -300,7 +298,6 @@ function segeration01(arr) {
       right--;
     }
   }
-  return arr;
 }
 
 console.log(segeration01(arr));
