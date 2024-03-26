@@ -258,4 +258,21 @@ console.log(shape.perimeter());
 
 let binder = shape.perimeter(10);
 console.log(binder);
+
+
+//console.log(words); // Output: ["Rama", "Ramuk", "Hgnis"]
+
+let words = 'Ram Ramul hint';
+
+let splitWord = words.split(' ');
+let reversedName = '';
+
+// Reverse the order of the words in the string without using reverse() or join()
+for (let i = splitWord.length - 1; i >= 0; i--) {
+  reversedName += splitWord[i];
+  if (i !== 0) {
+    reversedName += ' ';
+  }
+}
+console.log(reversedName); // Output: Hgnis Ramuk Rama
 */

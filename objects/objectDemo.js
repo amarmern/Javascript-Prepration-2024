@@ -15,6 +15,25 @@ let obj = { a: 1 };
 
 const copy = Object.assign({}, obj);
 console.log(copy);
+//1st way
+
+// const A = { prop: 1 };
+// let B = Object.assign({}, A);
+// B.prop = 2;
+// console.log('A', A);
+// console.log('B', B);
+
+//second
+// const A = { prop: 1 };
+// let B = { ...A };
+// B.prop = 2;
+// console.log(A, B);
+
+//3rd
+const A = { prop: 1 };
+let B = JSON.parse(JSON.stringify(A));
+B.prop = 2;
+console.log(A, B);
 
 let school = {
   name: 'Vivekananda School',

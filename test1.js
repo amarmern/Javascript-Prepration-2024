@@ -1,13 +1,8 @@
-const p1 = new Promise((resolve, reject) => {
-  let a = 2;
-  let b = 3;
-  if (a === b) {
-    resolve('success');
-  } else {
-    reject('fail');
-  }
-});
+const A = { prop: 1 };
 
-p1.then((val) => {
-  console.log(val);
-}).catch((err) => console.log(err));
+let B = Object.assign({}, A);
+
+B.prop = 2;
+
+console.log('A', A);
+console.log('B', B);
