@@ -142,4 +142,30 @@ function sum(a) {
   }
 }
 console.log(sum(2, 3));
-console.log(sum(2)(3)); */
+console.log(sum(2)(3)); 
+
+
+const sum = function (a){
+    return function(b){
+        if(b){
+             return sum(a +b)
+        }
+        return a
+    }
+}
+
+console.log(sum(2)(3)(1)(4)(5)())
+
+
+unction fun(...input) {
+  let res = 0;
+  for (let i of input) {
+    res += i;
+  }
+  return res;
+}
+
+console.log(fun(1, 2)); // 3
+console.log(fun(1, 2, 3)); // 6
+console.log(fun(1, 2, 3, 4, 5)); // 15
+*/

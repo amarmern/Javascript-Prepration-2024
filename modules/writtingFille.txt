@@ -1,0 +1,2 @@
+Data read from input.txt: Hi am senior 
+ Date create at Fri Apr 05 2024 11:44:17 GMT+0530 (India Standard Time)

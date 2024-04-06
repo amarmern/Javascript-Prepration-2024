@@ -1,8 +1,13 @@
-const A = { prop: 1 };
+let arr = [3, 1, 2, 4, 6, 5];
 
-let B = Object.assign({}, A);
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr.length - i; j++) {
+    if (arr[j] > arr[j + 1]) {
+      let temp = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = temp;
+    }
+  }
+}
 
-B.prop = 2;
-
-console.log('A', A);
-console.log('B', B);
+console.log(arr);

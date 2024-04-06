@@ -275,4 +275,52 @@ for (let i = splitWord.length - 1; i >= 0; i--) {
   }
 }
 console.log(reversedName); // Output: Hgnis Ramuk Rama
+
+
+function generatePattern() {
+  let pattern = [];
+  for (let i = 1; i <= 3; i++) {
+    pattern.push(Math.pow(11, i)); // Raise 11 to the power of i
+  }
+  return pattern;
+}
+
+// Call the function to generate the pattern
+const result = generatePattern();
+
+// Print the result
+console.log(result);
+
+function calculate(sqaures) {
+  var lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  for (var i = 0; i < lines.length; i++) {
+    var [a, b, c] = lines[i];
+    console.log([a, b, c]);
+    console.log(lines[i]);
+    console.log(sqaures[a]);
+    console.log(sqaures[b]);
+    console.log(sqaures[c]);
+    if (sqaures[a] === sqaures[b] && sqaures[a] === sqaures[c]) {
+      return sqaures[a];
+    }
+  }
+  return null;
+}
+
+const sqaures = ['0', '0', '0', null, null, null, null, null, null];
+//const sqaures = ['0', null, null, '0', null, null, '0', null, null];
+
+console.log(calculate(sqaures));
+
+
 */
