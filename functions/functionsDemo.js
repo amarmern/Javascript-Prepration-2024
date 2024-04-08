@@ -1,4 +1,3 @@
-/*
 //Function Declrations
 
 function mul(a, b) {
@@ -6,7 +5,7 @@ function mul(a, b) {
 }
 
 mul(2, 5);
-hoist ==> possible
+//hoist ==> possible
 console.log(sqaure(2));
 function sqaure(n) {
   return n * n;
@@ -23,8 +22,8 @@ console.log(mul(2, 6));
 //hoist => can not be hoisted
 console.log(mul(2, 6));
 const mul = function (a, b) {
-    console.log(a * b);
-  };
+  console.log(a * b);
+};
 
 function f() {}
 const f = 5;
@@ -32,7 +31,7 @@ console.log(f); ////Identifier 'f' has already been declared
 
 //clouser ...
 
- //lexical environment
+//lexical environment
 
 function init() {
   let name = 'mozila';
@@ -64,7 +63,7 @@ function sum(a) {
 let add3 = sum(3);
 let finalAdd = add3(5);
 console.log(finalAdd);
-or
+or;
 console.log(sum(2)(4));
 
 //practical
@@ -107,6 +106,17 @@ function calculateVolume(length) {
 let vol = calculateVolume(5)(5)(5);
 console.log(vol);
 
+const sum = function (a) {
+  return function (b) {
+    if (b) {
+      return sum(a + b);
+    }
+    return a;
+  };
+};
+
+console.log(sum(2)(3)(1)(4)(5)());
+
 //callback function and heigher order function
 
 function add(a, b, cb) {
@@ -130,8 +140,6 @@ add(3, 4, (val) => {
   console.log(val);
 });
 
-/
-
 function sum(a) {
   if (arguments.length > 1) {
     return arguments[0] + arguments[1];
@@ -142,22 +150,9 @@ function sum(a) {
   }
 }
 console.log(sum(2, 3));
-console.log(sum(2)(3)); 
+console.log(sum(2)(3));
 
-
-const sum = function (a){
-    return function(b){
-        if(b){
-             return sum(a +b)
-        }
-        return a
-    }
-}
-
-console.log(sum(2)(3)(1)(4)(5)())
-
-
-unction fun(...input) {
+function fun(...input) {
   let res = 0;
   for (let i of input) {
     res += i;
@@ -168,4 +163,3 @@ unction fun(...input) {
 console.log(fun(1, 2)); // 3
 console.log(fun(1, 2, 3)); // 6
 console.log(fun(1, 2, 3, 4, 5)); // 15
-*/

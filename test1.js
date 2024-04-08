@@ -1,13 +1,23 @@
-let arr = [3, 1, 2, 4, 6, 5];
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 
-for (let i = 0; i < arr.length; i++) {
-  for (let j = 0; j < arr.length - i; j++) {
-    if (arr[j] > arr[j + 1]) {
-      let temp = arr[j];
-      arr[j] = arr[j + 1];
-      arr[j + 1] = temp;
-    }
-  }
-}
+const PORT = process.env.PORT || 5000;
+app.use(express.json());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-console.log(arr);
+//ROUTE === route methods + url
+
+app.get('/', (req, res) => {
+  //res.status(200).send("Hello from Server")
+  res.status(200).json({ name: 'Amrendra Kumnar' });
+});
+
+app.post('/', (req, res, next) => {
+  const { fname, lName } = req.body;
+  res.status(201).json({ fname: fname, lName: lName });
+  next(console.log(`fnane: ${fname} && lname: ${lName}`));
+});
+
+app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
