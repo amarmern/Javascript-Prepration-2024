@@ -1,23 +1,32 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
+const arr1 = ['1', '3', '5', 'Trika', '5', '1', 'Trika'];
+let obj = {};
+for (let index = 0; index < arr1.length; index++) {
+  const element = arr1[index];
+  if (!obj[element]) {
+    obj[element] = [];
+  }
+  obj[element].push(element);
+}
+console.log(obj);
 
-const PORT = process.env.PORT || 5000;
-app.use(express.json());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+const array1 = [17, 12, 23, 11, 10, 67, 'test', 'develop', 6, 5];
+const array2 = [13, 3, 17, 23, 10, 34, 'develop', 5, 6, 'test'];
 
-//ROUTE === route methods + url
+const resultObject = {
+  found: [],
+  notFound: [],
+};
 
-app.get('/', (req, res) => {
-  //res.status(200).send("Hello from Server")
-  res.status(200).json({ name: 'Amrendra Kumnar' });
-});
-
-app.post('/', (req, res, next) => {
-  const { fname, lName } = req.body;
-  res.status(201).json({ fname: fname, lName: lName });
-  next(console.log(`fnane: ${fname} && lname: ${lName}`));
-});
-
-app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+for (let i = 0; i < array1.length; i++) {
+  for (let j = 0; j < array2.length; j++) {
+    if (array1[i] === array2[j]) {
+      //console.log(resultObject.found.push(array1[i]));
+      //resultObject.found.push(array1[i], array2[j])
+      //[resultObject ,array1[i]}]
+    } else {
+      // console.log(resultObject.notFound.push(array1[i]));
+    }
+  }
+}
+//console.log(resultObject.found);
+//console.log(resultObject.notFound);

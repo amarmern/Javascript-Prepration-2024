@@ -1,4 +1,4 @@
-/*const myPromise = new Promise((ressole, reject) => {
+const myPromise = new Promise((ressole, reject) => {
   setTimeout(() => {
     console.log('data');
   }, 1000);
@@ -36,7 +36,7 @@ const promise = new Promise(function (resolve, reject) {
 
 promise.then(() => console.log('success')).catch(() => console.log('fail'));
 
-const p1 = new Promise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
   const x = 1;
   const y = 1;
   if (x === y) {
@@ -46,13 +46,13 @@ const p1 = new Promise((resolve, reject) => {
   }
 });
 
-p1.then(() => console.log('success'))
+p.then(() => console.log('success'))
   .catch(() => console.log('fail'))
-  .finally(() => console.log('excuted this only'))
+  .finally(() => console.log('excuted this only'));
 
-  //or
+//or
 
-  const p1 = new Promise((resolve, reject) => {
+const p1 = new Promise((resolve, reject) => {
   let a = 2;
   let b = 3;
   if (a === b) {
@@ -62,8 +62,6 @@ p1.then(() => console.log('success'))
   }
 });
 
-p1.then((val) => {
+p.then((val) => {
   console.log(val);
 }).catch((err) => console.log(err));
-
-  */

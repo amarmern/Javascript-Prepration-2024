@@ -63,7 +63,7 @@ function sum(a) {
 let add3 = sum(3);
 let finalAdd = add3(5);
 console.log(finalAdd);
-or;
+//or;
 console.log(sum(2)(4));
 
 //practical

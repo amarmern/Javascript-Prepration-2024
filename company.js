@@ -34,18 +34,6 @@ for (let i = 0; i < arr.length; i++) {
 }
 console.log(obj);
 
-let item = arr.reduce((acc, item) => {
-  if (!acc[item]) {
-    acc[item] = 1;
-  } else {
-    acc[item] += 1;
-  }
-  return acc;
-}, {});
-
-console.log(item)
-
-
 //Generate the random number
 var myrandomnumber = Math.random(Math.round(1));
 console.log(myrandomnumber);
@@ -322,5 +310,17 @@ const sqaures = ['0', '0', '0', null, null, null, null, null, null];
 
 console.log(calculate(sqaures));
 
+const str = 'a.b.c.d';
+
+const parts = str.split('.');
+
+console.log(parts);
+
+let newArr = [];
+for (let i = 0; i < parts.length; i++) {
+  newArr.push(parts.slice(0, i + 1).join('.'));
+}
+
+console.log(newArr); //[ 'a', 'a.b', 'a.b.c', 'a.b.c.d' ]
 
 */

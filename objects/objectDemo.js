@@ -83,7 +83,7 @@ console.log(user2);
 let originalObject = { name: 'apple', price: { chennai: 120 } };
 let clonedObject = { ...originalObject };
 clonedObject.name = 'orange'; // will not reflect in originalObject
-clonedObject.price.chennai = '100'; //will reflect in originalObject
+clonedObject.price.chennai = '100'; //will reflect in originalObject also, solution is deep copy
 
 console.log(originalObject);
 console.log(clonedObject);
