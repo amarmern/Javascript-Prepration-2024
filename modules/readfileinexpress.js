@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   fs.readFile('./test.txt', 'utf8', function (err, data) {
     if (err) throw err;
 
-    res.send(data); //do operation on data that generates say resultArray;
+    res.json(data); //do operation on data that generates say resultArray;
   });
 });
 
