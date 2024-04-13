@@ -87,3 +87,20 @@ clonedObject.price.chennai = '100'; //will reflect in originalObject also, solut
 
 console.log(originalObject);
 console.log(clonedObject);
+
+const obj1 = {
+  a: {
+    c: 3,
+  },
+  b: 2,
+};
+
+const obj2 = {
+  ...obj1,
+  a: {
+    ...obj1.a,
+    c: 42,
+  },
+};
+
+console.log(obj2);

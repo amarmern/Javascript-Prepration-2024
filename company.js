@@ -323,4 +323,62 @@ for (let i = 0; i < parts.length; i++) {
 
 console.log(newArr); //[ 'a', 'a.b', 'a.b.c', 'a.b.c.d' ]
 
+//second highest number find
+
+const arr = [12, 35, 10, 35, 10, 34, 1]; 
+
+let highest = arr[0]
+for(let i =0; i< arr.length; i++){
+  if(highest < arr[i] ){
+      highest = arr[i]-1
+  }  
+}
+
+console.log(highest)
+
+
+...compnay asked ...
+
+
+Q1.What will be the output of the following code? and explain your answer.
+ 
+ for (var i = 0; i < 5; i++) {
+ setTimeout(function() { console.log(i); }, i * 1000 );
+ } /// 5,5,5,5,5
+ 
+ 
+Q2.What will be the output of the following code?.
+ 
+ console.log( "A" - "B" + 2); // NaN
+ console.log(2-'2'); // 0
+ console.log((1,2,3,4,5));
+ 
+Q3.What is the output of the following code?.
+ 
+ const data = { test :"Hello" }
+ data.test = "It is updated";
+ console.log(data) // It is updated
+
+Q. Create Express application and Implement GET API,In side GET API read
+the text file data & return the data to client, also handle the exceptions & API status codes.
+
+const fs = require('fs');
+const express = require('express');
+
+const app = express();
+let data = fs.readFile('./test.txt', 'utf-8', (data) => console.log(data));
+app.get('/', (req, res) => {
+  console.log(data);
+  try {
+    res.json({
+      data,
+    });
+  } catch (error) {
+    console.log('Fetting data issue');
+  }
+});
+
+app.listen(5000, () => console.log(`service is running on 5000 port`));
+
+
 */

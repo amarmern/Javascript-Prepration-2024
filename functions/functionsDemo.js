@@ -163,3 +163,20 @@ function fun(...input) {
 console.log(fun(1, 2)); // 3
 console.log(fun(1, 2, 3)); // 6
 console.log(fun(1, 2, 3, 4, 5)); // 15
+
+//compose function
+
+const add = (a) => a + 5;
+
+const sub = (a) => a - 2;
+
+const mul = (a) => a * 4;
+
+function compose(...fn) {
+  return (val) => {
+    return fn.reduceRight((args, fn) => fn(args), val);
+  };
+}
+
+const tasks = compose(add, sub, mul);
+console.log(tasks(5)); //23

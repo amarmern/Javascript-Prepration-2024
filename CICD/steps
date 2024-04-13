@@ -1,0 +1,30 @@
+step 1 create azure-pipelines.yml file to create the pipe line (Go to repo and select file and creae New FIle) and created on empty file
+step 2 commit in to main branch
+
+in the file
+
+        triggers:
+            -main
+         pool
+            vmImage: 'ubonto-latest'
+        stage:
+        - stage: builApp
+            jobs:
+            - jobs: BuildPushImage
+            steps:
+            --settings--
+            -tasks: Docker@2
+            inputs:
+                ContainerRegistry: 'ACR Demo',
+                repository: '',
+                command: 'buidAndPush'
+                DockerFile: '.DockerFile'
+                tags: '${Build.BuildId}'
+
+step 3 (configure): in edit of azure-pipelines.yml file we have right side tasks for add the the tools for(ex: docker, Ant) we have to sleect docker and can select the command buildAndPush from drop down of command
+
+step 4 go to cproject configure and select the service like azure or ec2 ar any other
+
+steps 5 : save the yml file and we can see the stages of pipeline automatically created
+
+step 6 we can create the different satges like DelpoyDev Deploytest DeployProd

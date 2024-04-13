@@ -42,7 +42,7 @@ factorail(5);
 
 console.log(sumArray([2, 3, 1, 1, -1, 3, 4], 7));
 
-function sumArray(arr, sum) {
+function twoSum(arr, sum) {
   let obj = {};
   for (let i = 0; i < arr.length; i++) {
     let firstEl = arr[i];
@@ -51,6 +51,22 @@ function sumArray(arr, sum) {
       console.log(firstEl, secondEle);
     } else {
       obj[firstEl] = 1;
+    }
+  }
+}
+
+......
+
+console.log(twoSum([2, 3, 1, 1, -1, 3, 4], 7));
+function twoSum(arr, sum) {
+  let obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    let firstEl = arr[i];
+    let secondEle = sum - firstEl;
+    if (obj[secondEle]) {
+      return [firstEl, secondEle];
+    } else {
+      obj[firstEl] = arr[i];
     }
   }
 }
