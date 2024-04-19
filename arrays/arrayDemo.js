@@ -302,4 +302,39 @@ function segeration01(arr) {
 
 console.log(segeration01(arr));
 
+const A = [
+  { name: 'p1', count: 1 },
+  { name: 'p2', count: 2 },
+  { name: 'p3', count: 2 },
+];
+
+const p3Obj = A.find((item) => item.name === 'p3');
+
+if (p3Obj) {
+  p3Obj.count++;
+}
+
+console.log(A);
+
+/// using index 
+
+// Create a shallow copy of the array
+const A_copy = [...A];
+
+// Find the index of the object with name 'p3'
+const index = A_copy.findIndex((item) => item.name === 'p3');
+
+// If 'p3' exists in the array, increase its count by 1 in the copied array
+if (index !== -1) {
+  A_copy[index] = { ...A_copy[index], count: A_copy[index].count + 1 };
+}
+
+console.log(A_copy);
+
+const newItem = A.map((item) =>
+  item.name === 'p3' ? { ...item, count: item.count + 1 } : item
+);
+
+console.log(newItem);
+
 */

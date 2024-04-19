@@ -180,3 +180,42 @@ function compose(...fn) {
 
 const tasks = compose(add, sub, mul);
 console.log(tasks(5)); //23
+
+//Higher order function
+
+const radius = [3, 1, 2, 4];
+
+const area = (radius) => Math.PI * radius * radius;
+
+const circumFrance = (radius) => 2 * Math.PI * radius;
+
+const calculate = function (raduis, logic) {
+  let output = [];
+  for (let i = 0; i < raduis.length; i++) {
+    output.push(logic(raduis[i]));
+  }
+  return output;
+};
+
+console.log(calculate(radius, area));
+
+console.log(radius.map(area));
+
+//Plloyfill way
+//const radius = [3,1,2,4];
+
+//const area = (radius) =>  Math.PI*radius*radius;
+
+//const circumFrance = (radius) => 2*Math.PI*radius;
+
+Array.prototype.calculate = function (logic) {
+  let output = [];
+  for (let i = 0; i < this.length; i++) {
+    output.push(logic(this[i]));
+  }
+  return output;
+};
+
+console.log(radius.calculate(area));
+
+console.log(radius.map(area));

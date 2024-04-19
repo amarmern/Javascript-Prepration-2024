@@ -1,4 +1,5 @@
-step 1 create azure-pipelines.yml file to create the pipe line (Go to repo and select file and creae New FIle) and created on empty file
+step 1 create azure-pipelines.yml file to create the pipe line 
+(Go to repo and select file and creae New FIle) and created on empty file
 step 2 commit in to main branch
 
 in the file
@@ -21,7 +22,9 @@ in the file
                 DockerFile: '.DockerFile'
                 tags: '${Build.BuildId}'
 
-step 3 (configure): in edit of azure-pipelines.yml file we have right side tasks for add the the tools for(ex: docker, Ant) we have to sleect docker and can select the command buildAndPush from drop down of command
+step 3 (configure): in edit of azure-pipelines.yml file we have right side tasks for add the the tools 
+for(ex: docker, Ant) we have to sleect docker and can select the command buildAndPush from drop down
+ of command
 
 step 4 go to cproject configure and select the service like azure or ec2 ar any other
 

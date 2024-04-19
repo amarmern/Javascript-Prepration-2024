@@ -247,24 +247,6 @@ console.log(shape.perimeter());
 let binder = shape.perimeter(10);
 console.log(binder);
 
-
-//console.log(words); // Output: ["Rama", "Ramuk", "Hgnis"]
-
-let words = 'Ram Ramul hint';
-
-let splitWord = words.split(' ');
-let reversedName = '';
-
-// Reverse the order of the words in the string without using reverse() or join()
-for (let i = splitWord.length - 1; i >= 0; i--) {
-  reversedName += splitWord[i];
-  if (i !== 0) {
-    reversedName += ' ';
-  }
-}
-console.log(reversedName); // Output: Hgnis Ramuk Rama
-
-
 function generatePattern() {
   let pattern = [];
   for (let i = 1; i <= 3; i++) {
@@ -293,11 +275,6 @@ function calculate(sqaures) {
 
   for (var i = 0; i < lines.length; i++) {
     var [a, b, c] = lines[i];
-    console.log([a, b, c]);
-    console.log(lines[i]);
-    console.log(sqaures[a]);
-    console.log(sqaures[b]);
-    console.log(sqaures[c]);
     if (sqaures[a] === sqaures[b] && sqaures[a] === sqaures[c]) {
       return sqaures[a];
     }
@@ -379,6 +356,62 @@ app.get('/', (req, res) => {
 });
 
 app.listen(5000, () => console.log(`service is running on 5000 port`));
+
+//happeist mind...........
+
+str1 = 'I am Kumar';
+str2 = 'I ma ramuK';
+
+let reverseStr = '';
+let tempArr = [];
+
+for(let i =0; i < str1.)
+
+console.log(reverseStr);
+
+// string1 = 'abc';
+// string2 = 'jklapqrcmnob';
+
+// let spltitStr1 = string1.split('');
+
+// for (let i = 0; i < spltitStr1.length; i++) {
+//   let spltitStr2 = string2.split('');
+//   for (let j = 0; j < spltitStr2.length; j++) {
+//     if (spltitStr1[i] == spltitStr2[j]) {
+//       console.log(true);
+//     }
+//   }
+// }
+
+let str = "aba";
+
+let storeStr = "";
+
+const checkPlindrum = (str) => {
+    for(let i = str.length -1 ; i>=0; i--){
+    storeStr += str[i]
+}
+(storeStr === str) ? console.log("Palindrum") : console.log("not a Palindrum")
+}
+
+checkPlindrum(str)
+.............wissen......................
+
+function sleep (delay, input) {
+  return new Promise((resolve) =>{
+        setTimeout(()=>{
+      resolve(input)
+   }, delay)
+    })
+  
+}
+
+const p1 = {
+    sleep: sleep
+}  
+    
+p1.sleep(1000, "World").then(console.log); // Outputs: World after 1000ms
+p1.sleep(500, "Hello").then(console.log);  // Outputs: Hello after 500ms
 
 
 */
