@@ -13,7 +13,7 @@ fs.createReadStream('./modules/longfile.txt').pipe(
   zlib.createGzip().pipe(fs.createWriteStream('./modules/sample.zip'))
 );
 
-app.get('/', (req, res) => {
+app.get('/streamdemo', (req, res) => {
   const stream = fs.createReadStream('./modules/longfile.txt', 'utf-8');
   stream.on('data', (chunk) => res.write(chunk));
   stream.on('end', () => res.end);

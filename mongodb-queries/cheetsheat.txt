@@ -1,0 +1,173 @@
+//object ID contains
+1. 4 byte date stamp
+2. 5 byte process ID
+3. 3 byte random values
+... database commands ...
+view all database
+> show dbs
+for create and switch new database
+> use newDatabaseName
+view current database
+> db 
+
+Delete database
+db.dropDatabase()
+
+... collections commands...
+To switch other database
+> use databaseName
+
+To create the new collection
+> db.createCollection("comments")
+
+to show the collections
+> show Collections
+
+to delete the collection.
+> db.collectionName.drop()
+
+... Rows/ fields commands..
+
+To Insert one Row
+
+> db.comments.insertOne({"name": "Aditi kumari", "lang" : "javascript" ,"member": 2})
+
+To Insert many documents
+
+> db.comments.insertMany([{"name": "Aditi kumari", "lang" : "javascript" ,"member": 2},
+{"name": "Shamila Devi", "lang" : "javascript" ,"member": 3},
+{"name": "Shivam kumar", "lang" : "Java" ,"member": 4}])
+
+To Show the collections 
+> db.comments.find().pretty()
+
+To search in mongo db
+>db.comments.find({"lang" : "Java"})
+
+Limiting number of rows 
+> db.comments.find().limit(2)
+
+To Sort in ascending order
+db.comments.find().sort({member : 1}) 
+
+To Sort in desending order
+db.comments.find().sort({member : -1})
+
+To remove db
+db.content.drop()
+
+To update the documents.
+
+>db.comments.updateOne({name: 'Shubham'},
+{$set: {'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 51
+}}, {upsert: true})
+
+Mongodb Rename of field Operator
+
+db.comments.update({name: 'Rohan'},
+{$rename:{
+    member_since: 'member'
+}})
+
+Delete Row (deleteOne, deleteMany, findOneAndDelete)
+
+> db.comments.findOneAndDelete({name: 'Aditi kumari'})
+
+Less than/Greater than/ Less than or Eq/Greater than or Eq
+
+db.comments.find({price: {$lt: 90}})
+db.comments.find({price: {$lte: 90}})
+db.comments.find({price: {$gt: 90}})
+db.comments.find({price: {$gte: 90}})
+
+Remove a Single Field
+{ $unset: "<field.nestedfield>" }
+or
+{ $unset: [ "<field1.nestedfield>", ...] }
+db.books.aggregate([ { $unset: "copies" } ])
+
+-- create capped collection
+> db.createCollection("test",{capped: true, autoIndexId: true, size: 612334, max: 100})
+
+> db.test.isCapped()
+
+-- convert normal collection to capped 
+> db.runCommand({"convertToCapped": "customer", size: 100000})
+
+-- clusture autoIndexId
+-- To create the clustered.
+
+db.createCollection(
+   "orders",
+   { clusteredIndex: { "key": { _id: 1 }, "unique": true, "name": "orders clustered key" } }
+)
+
+-- to insert many records in the clustered documents
+db.orders.insertMany( [
+   { _id: ISODate( "2022-03-18T12:45:20Z" ), "quantity": 50, "totalOrderPrice": 500 },
+   { _id: ISODate( "2022-03-18T12:47:00Z" ), "quantity": 5, "totalOrderPrice": 50 },
+   { _id: ISODate( "2022-03-18T12:50:00Z" ), "quantity": 1, "totalOrderPrice": 10 }
+] )
+
+-- To find the cluster document 
+
+db.orders.find( { _id: { $gt: ISODate( "2022-03-18T12:47:00.000Z" ) } } )
+
+--- cursor ----
+[
+    {_id: 1, name: 'A', gender: 'M'},
+    {_id: 2, name: 'B', gender: 'F'},
+    {_id: 3, name: 'C', gender: 'M'},
+    {_id: 4, name: 'D', gender: 'F'},
+    {_id: 5, name: 'E', gender: 'M'},
+    {_id: 6, name: 'F', gender: 'F'},
+    {_id: 7, name: 'G', gender: 'M'},
+    {_id: 8, name: 'H', gender: 'F'},
+    {_id: 9, name: 'I', gender: 'M'},
+    {_id: 10, name: 'J', gender: 'F'},
+    {_id: 11, name: 'K', gender: 'M'},
+    {_id: 12, name: 'L', gender: 'F'},
+    {_id: 13, name: 'M', gender: 'M'},
+    {_id: 14, name: 'N', gender: 'F'},
+    {_id: 15, name: 'P', gender: 'M'},
+    {_id: 16, name: 'Q', gender: 'F'},
+    {_id: 17, name: 'R', gender: 'M'},
+    {_id: 18, name: 'S', gender: 'F'},
+    {_id: 19, name: 'T', gender: 'M'},
+    {_id: 20, name: 'U', gender: 'M'},
+    {_id: 21, name: 'V', gender: 'F'},
+    {_id: 22, name: 'W', gender: 'M'},
+    {_id: 23, name: 'X', gender: 'F'},
+    {_id: 24, name: 'Y', gender: 'M'},
+    {_id: 25, name: 'Z', gender: 'F'},
+    {_id: 26, name: 'A', gender: 'F'},
+
+]
+find methods returns onle some batch of document from all document this is called in cursor in Mongodb
+
+for return more document need pass it 
+
+also toArray() that return all the documents internally
+
+> db.customer.find().toArray()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

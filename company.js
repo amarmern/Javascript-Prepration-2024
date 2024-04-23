@@ -1,15 +1,16 @@
 /*
 ...................primitive and nonn primitive data type...........
 
-// let a = 1;
-// let b = a;
-// b = 2;
-// console.log('a=', a);
-// console.log('b=', b);
+let a = 1;
+let b = a;
+b = 2;
+console.log('a=', a);
+console.log('b=', b);
 
 const A = { prop: 1 };
+let B = A //(not good way)
 
-// let B = Object.assign({}, A);
+// let B = Object.assign({}, A); // (good way)
 // B.prop = 2;
 
 //let B = { ...A };
@@ -403,7 +404,6 @@ function sleep (delay, input) {
       resolve(input)
    }, delay)
     })
-  
 }
 
 const p1 = {
@@ -413,5 +413,95 @@ const p1 = {
 p1.sleep(1000, "World").then(console.log); // Outputs: World after 1000ms
 p1.sleep(500, "Hello").then(console.log);  // Outputs: Hello after 500ms
 
+//sonata
+const counter = function(){
+   let privateCounter = 0;
+   function changeBy(val){
+        privateCounter += val
+   }
+   return {
+       increment : function(){
+           changeBy(1)
+       },
+       decrement : function(){
+           changeBy(-1)
+       },
+       value : function(){
+           return privateCounter;
+       }
+   }
+}
+
+const counter1 = counter()
+counter1.increment();
+counter1.increment();
+counter1.increment();
+counter1.decrement();
+counter1.increment();
+console.log(counter1.value())
+
+let str = 'hi i am there'
+let obj = {}
+
+for (let i = 0; i < str.length; i++) {
+    if(str[i] !== " "){
+      if (!obj[str[i]]) {
+      obj[str[i]] = 1;
+    } else {
+      obj[str[i]]++;
+    }  
+    }
+    
+  }
+  
+  console.log(obj)
+
+//capegenmini
+const arr = [1, 1, 2, 3, 4, 5, 5];
+const newArr = []
+for(let i=0; i< arr.length; i++){
+    if(arr[i] == arr[i+1]){
+        newArr.push(arr[i])
+    }
+    }
+
+console.log(newArr)
+//second aproch
+const arr = [1, 2, 3, 5, 4, 5,1];
+let newArr =arr.filter((e, i, a) => a.indexOf(e) !== i)
+
+console.log(newArr)
+
+or
+
+const arr = [-1, 2, 2, 2, 0, 0, 0, 500, -1, 'a', 'a', 'a']
+
+const filtered = arr.filter((el, index) => arr.indexOf(el) !== index)
+// => filtered = [ 2, 2, 0, 0, -1, 'a', 'a' ]
+
+const duplicates = [...new Set(filtered)]
+
+console.log(duplicates)
+// => [ 2, 0, -1, 'a' ]
+
+or
+
+const arr = ['hi', 'hi', 'hi', 'bye', 'bye', 'asd']
+
+let obj = {}
+let newArr = []
+for(let i =0; i< arr.length; i++){
+   if(!obj[arr[i]]){
+    obj[arr[i]] =1
+   }else{
+    obj[arr[i]] ++
+   }
+    if(obj[arr[i]] > 1) {
+        newArr.push(arr[i])
+           }
+   }
+
+let setVal = [...new Set(newArr)]
+console.log(setVal)
 
 */
