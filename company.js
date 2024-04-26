@@ -363,15 +363,33 @@ app.listen(5000, () => console.log(`service is running on 5000 port`));
 str1 = 'I am Kumar';
 str2 = 'I ma ramuK';
 
-let reverseStr = '';
-let tempArr = [];
 
-for(let i =0; i < str1.)
+let arr = str1.split(' ');
 
-console.log(reverseStr);
+let reversedArr = [];
+for (let i = 0; i < arr.length; i++) {
+  let reverseStr = '';
+  for (let j = arr[i].length - 1; j >= 0; j--) {
+    reverseStr += arr[i][j];
+  }
+  reversedArr.push(reverseStr);
+}
+console.log(reversedArr.join(' '));
+
 
 // string1 = 'abc';
 // string2 = 'jklapqrcmnob';
+
+const string1 = 'abc';
+const string2 = 'jklapqrcmnob';
+
+const index = string2.match(/[abc]/g);
+
+if (index) {
+  console.log(`'${string1}' found at index ${index} in '${string2}'`);
+} else {
+  console.log(`'${string1}' not found in '${string2}'`);
+}
 
 // let spltitStr1 = string1.split('');
 

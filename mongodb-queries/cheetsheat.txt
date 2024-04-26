@@ -1,5 +1,5 @@
 //object ID contains
-1. 4 byte date stamp
+1. 4 byte date machin id
 2. 5 byte process ID
 3. 3 byte random values
 ... database commands ...

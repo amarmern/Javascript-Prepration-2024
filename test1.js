@@ -1,14 +1,10 @@
-let str = 'hi i am there';
-let obj = {};
-let newStr = str.trim();
-for (let i = 0; i < newStr.trim().length; i++) {
-  if (newStr[i] !== ' ') {
-    if (!obj[newStr[i]]) {
-      obj[newStr[i]] = 1;
-    } else {
-      obj[newStr[i]]++;
-    }
-  }
-}
+const string1 = 'abc';
+const string2 = 'jklapqrcmnob';
 
-console.log(obj);
+const index = string2.match(/[abc]/g);
+
+if (index) {
+  console.log(`'${string1}' found at index ${index} in '${string2}'`);
+} else {
+  console.log(`'${string1}' not found in '${string2}'`);
+}

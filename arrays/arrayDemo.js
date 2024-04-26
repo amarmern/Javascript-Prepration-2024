@@ -14,12 +14,10 @@ console.log(newMapArr);
 //filter method
 const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
 
-function filterItem(arr, query) {
-  return arr.filter((el) => el.includes(query));
-}
 
-let filetered = filterItem(fruits, 'app');
-console.log(filetered);
+const val = fruits.filter((el) => el.includes('man'));
+console.log(val);
+
 
 let items = [1, 2, 3, 4, 5];
 let evenNums = items.filter((el) => el % 2 === 0);
@@ -108,6 +106,7 @@ const displayItem = (el) => {
 };
 array1.customForEach(displayItem);
 console.log('..............');
+
 Array.prototype.customMap = function (cb) {
   let newArray = [];
   for (var i = 0; i < this.length; i++) {
@@ -162,6 +161,15 @@ for (let i = 0; i < arr.length; i += chunkSize) {
 console.log(chunks);
 
 //.... rermove duplicate of title from array...
+
+let person = [
+  { name: "chand", age: 29 },
+  { name: "chand", age: 29 },
+  { name: "basha", age: 29 },
+  { name: "sayyed", age: 29 }
+];
+
+
 books = [
   { title: 'C++', author: 'Bjarne' },
   { title: 'Java', author: 'James' },

@@ -1,14 +1,16 @@
 //1........................................
 const str = 'a.b.c.d';
 
-let sliceStr = str.slice('.');
+const parts = str.split('.');
 
-let res = [];
+console.log(parts);
 
-for (let i = 0; i < sliceStr.length; i++) {
-  res.push(sliceStr[(0, i + 1)].join('.'));
+let newArr = [];
+for (let i = 0; i < parts.length; i++) {
+  newArr.push(parts.slice(0, i + 1).join('.'));
 }
-console.log(res);
+
+console.log(newArr); //[ 'a', 'a.b', 'a.b.c', 'a.b.c.d' ]
 
 //2..............................................
 
@@ -21,7 +23,7 @@ function sum(a) {
     }
     return a;
   };
-}
+} //15
 
 //3........................................
 
@@ -35,7 +37,7 @@ for (let i = 0; i < arr.length; i++) {
   }
   reversedArr.push(reversedStr);
 }
-console.log(reversedArr);
+console.log(reversedArr); //[ 'cba', 'rqp', 'zyx' ]
 
 //4........................................
 
@@ -351,4 +353,19 @@ function capitalize(str) {
 
 console.log(capitalize('hi i am there'));
 
-//24.....................................................................................
+//24..................................find duplicate...................................................
+
+const arr = [1, 1, 2, 3, 4, 5, 5];
+
+let obj = {};
+
+for (let i = 0; i < arr.length; i++) {
+  if (!obj[arr[i]]) {
+    obj[arr[i]] = 1;
+  } else {
+    obj[arr[i]]++;
+  }
+  if (obj[arr[i]] > 1) {
+    console.log(arr[i]);
+  }
+}

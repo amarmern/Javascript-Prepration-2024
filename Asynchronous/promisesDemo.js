@@ -1,6 +1,6 @@
 const myPromise = new Promise((ressole, reject) => {
   setTimeout(() => {
-    console.log('data');
+    ressole.log('data');
   }, 1000);
 });
 
@@ -65,3 +65,52 @@ const p1 = new Promise((resolve, reject) => {
 p.then((val) => {
   console.log(val);
 }).catch((err) => console.log(err));
+
+//promise is calling in the async / await method
+
+function sleepFunction() {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve('success');
+    }, 2000)
+  );
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await sleepFunction();
+  console.log(result);
+}
+
+asyncCall();
+/// Calling the promise all inside async / await
+
+let firstPromise = () => {
+  return new Promise((resolve) => {
+    resolve('hello');
+  });
+};
+let secondPromise = () => {
+  return new Promise((resolve) => {
+    resolve('Hi');
+  });
+};
+
+let thirdPromise = () => {
+  return new Promise((resolve) => {
+    return setTimeout(() => {
+      resolve('How, Are you?');
+    }, 2000);
+  });
+};
+
+let promiseExecute = async () => {
+  let promise = await Promise.all([
+    firstPromise(),
+    secondPromise(),
+    thirdPromise(),
+  ]);
+  console.log(promise);
+};
+
+promiseExecute();

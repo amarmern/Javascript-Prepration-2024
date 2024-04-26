@@ -22,3 +22,29 @@ app.get('/streamdemo', (req, res) => {
 app.listen(PORT, () =>
   console.log(`service is running http://localhost:${PORT}`)
 );
+
+//another code
+
+const express = require('express');
+const fs = require('fs');
+const app = express();
+
+const PORT = process.env.PORT || 5000;
+
+app.get('/', (req, res) => {
+  const stream = fs.createReadStream('./test.txt', 'utf-8');
+  let data = stream.on('data', (chunk) => res.write(chunk));
+  stream.on('end', () => res.end);
+
+  res.status(200).json({
+    status: 'success',
+    user: { fName: 'amrendra', lName: 'kumar' },
+    data,
+  });
+
+  stream.on('end', () => res.end);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listning on port ${PORT}`);
+});
