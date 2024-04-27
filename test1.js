@@ -1,10 +1,16 @@
-const string1 = 'abc';
-const string2 = 'jklapqrcmnob';
+// const a = 10;
 
-const index = string2.match(/[abc]/g);
+// (function name(params) {
+//   let a = 20;
+//   console.log(a);
+// })();
 
-if (index) {
-  console.log(`'${string1}' found at index ${index} in '${string2}'`);
-} else {
-  console.log(`'${string1}' not found in '${string2}'`);
+// console.log(a);
+
+let arr = [1, 2, 3, 4, 5];
+//console.log(arr);
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(() => {
+    console.log(arr[i]);
+  }, 100);
 }

@@ -522,4 +522,46 @@ for(let i =0; i< arr.length; i++){
 let setVal = [...new Set(newArr)]
 console.log(setVal)
 
+///Synicron
+
+let arr = [1, 2, 3, 4, 5, 6, 3, 6];
+
+let notRepeatedElemnt = [];
+
+for (let i = 0; i < arr.length; i++) {
+  let unique = true;
+  for (let j = 0; j < arr.length; j++) {
+    if (i !== j && arr[i] === arr[j]) {
+      unique = false;
+      break;
+    }
+  }
+  if (unique) {
+    notRepeatedElemnt.push(arr[i]);
+  }
+}
+
+console.log(notRepeatedElemnt);
+
+///Zensor
+
+// const a = 10;
+
+// (function name(params) {
+//   let a = 20;
+//   console.log(a);
+// })();
+
+// console.log(a);
+
+let arr = [1, 2, 3, 4, 5];
+//console.log(arr);
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(() => {
+    console.log(arr[i]);
+  }, 100);
+}
+
+
+
 */

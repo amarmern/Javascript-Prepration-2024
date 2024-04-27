@@ -85,18 +85,18 @@ async function asyncCall() {
 asyncCall();
 /// Calling the promise all inside async / await
 
-let firstPromise = () => {
+const firstPromise = () => {
   return new Promise((resolve) => {
     resolve('hello');
   });
 };
-let secondPromise = () => {
+const secondPromise = () => {
   return new Promise((resolve) => {
     resolve('Hi');
   });
 };
 
-let thirdPromise = () => {
+const thirdPromise = () => {
   return new Promise((resolve) => {
     return setTimeout(() => {
       resolve('How, Are you?');
