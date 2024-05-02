@@ -90,31 +90,6 @@ const PalindrumCheck = (str) => {
 
 PalindrumCheck(str);
 
-..............Altimetrik..........
-let arr = [0, 1, 0, 1, 1, 1];
-
-function segeration01(arr) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left < right) {
-    while (arr[left] === 0) {
-      left++;
-    }
-    while (arr[right] === 1) {
-      right--;
-    }
-
-    if (left < right) {
-      arr[left] = 0;
-      arr[right] = 1;
-      left++;
-      right--;
-    }
-  }
-  return arr;
-}
-
-console.log(segeration01(arr));
 //wissen ..
 const users = [
   {
@@ -243,7 +218,7 @@ const shape = {
 };
 
 console.log(shape.diameter());
-console.log(shape.perimeter());
+console.log(shape.perimeter(10));
 
 let binder = shape.perimeter(10);
 console.log(binder);
@@ -329,13 +304,13 @@ Q2.What will be the output of the following code?.
  
  console.log( "A" - "B" + 2); // NaN
  console.log(2-'2'); // 0
- console.log((1,2,3,4,5));
+ console.log((1,2,3,4,5)); //5
  
 Q3.What is the output of the following code?.
  
  const data = { test :"Hello" }
  data.test = "It is updated";
- console.log(data) // It is updated
+ console.log(data) // { test: 'It is updated' }
 
 Q. Create Express application and Implement GET API,In side GET API read
 the text file data & return the data to client, also handle the exceptions & API status codes.
@@ -357,6 +332,30 @@ app.get('/', (req, res) => {
 });
 
 app.listen(5000, () => console.log(`service is running on 5000 port`));
+
+const fs = require('fs');
+console.log('Program has started');
+
+setTimeout(() => {
+  console.log('Timmer callback executed');
+}, 0);
+
+fs.readFile('./test.txt', 'utf-8', (err, data) =>
+  console.log(' file reading call back')
+);
+
+setImmediate(() => {
+  console.log('Set Immediate call back executed');
+}, 100);
+
+console.log('Program has completed');
+
+o/p
+Program has started
+Program has completed
+Timmer callback executed
+ file reading call back
+Set Immediate call back executed
 
 //happeist mind...........
 
@@ -475,6 +474,7 @@ for (let i = 0; i < str.length; i++) {
   console.log(obj)
 
 //capegenmini
+// get only duplicate record like ex: [ 1, 5 ]
 const arr = [1, 1, 2, 3, 4, 5, 5];
 const newArr = []
 for(let i=0; i< arr.length; i++){
@@ -491,7 +491,7 @@ let newArr =arr.filter((e, i, a) => a.indexOf(e) !== i)
 console.log(newArr)
 
 or
-
+// get only duplicate records from elememt
 const arr = [-1, 2, 2, 2, 0, 0, 0, 500, -1, 'a', 'a', 'a']
 
 const filtered = arr.filter((el, index) => arr.indexOf(el) !== index)
@@ -503,6 +503,7 @@ console.log(duplicates)
 // => [ 2, 0, -1, 'a' ]
 
 or
+// get only duplicate records from elememt
 
 const arr = ['hi', 'hi', 'hi', 'bye', 'bye', 'asd']
 
@@ -523,7 +524,7 @@ let setVal = [...new Set(newArr)]
 console.log(setVal)
 
 ///Synicron
-
+//get the unique record only..
 let arr = [1, 2, 3, 4, 5, 6, 3, 6];
 
 let notRepeatedElemnt = [];
@@ -562,6 +563,38 @@ for (var i = 0; i < arr.length; i++) {
   }, 100);
 }
 
+function convertYearToString(year) {
+    const digits = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+    const yearStr = year.toString();
+    let result = "";
+    
+    for (let i = 0; i < yearStr.length; i++) {
+        result += digits[parseInt(yearStr[i])];
+    }
+    
+    return result;
+}
 
+const year = 2024;
+const spokenYear = convertYearToString(year);
+console.log(spokenYear); // Output: "TwoZeroTwoFour"
+
+
+//input: 2024
+//output: "TwoZero-TwoFour"
+
+unit test
+
+const url = 'http://127.0.0.1:3000/router';
+  
+  describe('The router', () => {
+    test('The get route', async () => {
+      const res = await axios.get(url)
+
+      
+      expect(res.status).toBe(200)
+      expect(res.data).toEqual('Hello World!')
+    })
+  })
 
 */

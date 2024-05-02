@@ -105,7 +105,7 @@ const thirdPromise = () => {
 };
 
 let promiseExecute = async () => {
-  let promise = await Promise.all([
+  let promise = await Promise.allSettledll([
     firstPromise(),
     secondPromise(),
     thirdPromise(),

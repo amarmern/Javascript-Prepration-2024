@@ -71,7 +71,7 @@ console.log(sum(2)(4));
 const makeCounter = function () {
   let privateCounter = 0;
   function changeByVal(val) {
-    return (privateCounter += val);
+    privateCounter += val;
   }
   return {
     increment() {

@@ -21,11 +21,11 @@ const shape = {
   diameter() {
     return this.radius * 2;
   },
-  perimeter: () => 2 * Math.PI * radius,
+  perimeter: (radius) => 2 * Math.PI * radius,
 };
 
 console.log(shape.diameter());
-console.log(shape.perimeter());
+console.log(shape.perimeter(10));
 
-const binder = shape.perimeter.call(10);
+let binder = shape.perimeter(10);
 console.log(binder);
