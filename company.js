@@ -332,7 +332,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(5000, () => console.log(`service is running on 5000 port`));
-
+.................................
 const fs = require('fs');
 console.log('Program has started');
 
@@ -356,6 +356,12 @@ Program has completed
 Timmer callback executed
  file reading call back
 Set Immediate call back executed
+or some times getting
+Program has started
+Program has completed
+Timmer callback executed
+Set Immediate call back executed
+ file reading call back
 
 //happeist mind...........
 
@@ -596,5 +602,73 @@ const url = 'http://127.0.0.1:3000/router';
       expect(res.data).toEqual('Hello World!')
     })
   })
+
+  //airbus
+  const array = [4, 1, 7, -1, 2, 3];
+
+let lowest = array[0];
+let secondlowest = array[0];
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] < lowest) {
+    secondlowest = lowest;
+    lowest = array[i];
+  } else if (array[i] < secondlowest && array[i] != lowest) {
+    secondlowest = array[i];
+  }
+}
+//https://www.educative.io/answers/how-to-get-second-minimum-element-of-an-array-in-javascript
+console.log(lowest, secondlowest);
+
+let str = 'How do you do';
+let words = str.match(/\w+/g);
+let obj = {};
+
+for (let item of words) {
+  if (!obj[item]) {
+    obj[item] = 1;
+  } else {
+    obj[item]++;
+  }
+}
+
+let max = 0;
+let mostRepeated = '';
+for (let word of words) {
+  if (obj[word] > max) {
+    max = obj[word];
+    mostRepeated = word;
+  }
+}
+
+console.log(mostRepeated);
+
+let arr = ['MH:Pune', 'MH:Mumbai', 'Delhi:New Delhi', 'TN:Ooty'];
+//{“count” 2, cities: [“Pune”, “Ooty”]}
+let newArr = [];
+for (let i = 0; i < arr.length; i++) {
+  for (let j = i; j <= i; j++) {
+    console.log(arr[j]);
+    if (arr[j].slice(2, i)) {
+      newArr.push(arr[j]);
+    }
+  }
+}
+
+console.log(newArr);
+
+.....
+
+let i;
+for (i = 0; i < 5; i++) {
+  setTimeout(
+    (function (i) {
+      return function () {
+        console.log(i);
+      };
+    })(i),
+    1000
+  );
+}
 
 */
