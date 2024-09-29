@@ -388,10 +388,10 @@ console.log(reversedArr.join(' '));
 const string1 = 'abc';
 const string2 = 'jklapqrcmnob';
 
-const index = string2.match(/[abc]/g);
+const match = string2.match(/[abc]/g);
 
-if (index) {
-  console.log(`'${string1}' found at index ${index} in '${string2}'`);
+if (match) {
+  console.log(`'${string1}' found at index ${match} in '${string2}'`);
 } else {
   console.log(`'${string1}' not found in '${string2}'`);
 }
@@ -481,16 +481,7 @@ for (let i = 0; i < str.length; i++) {
 
 //capegenmini
 // get only duplicate record like ex: [ 1, 5 ]
-const arr = [1, 1, 2, 3, 4, 5, 5];
-const newArr = []
-for(let i=0; i< arr.length; i++){
-    if(arr[i] == arr[i+1]){
-        newArr.push(arr[i])
-    }
-    }
 
-console.log(newArr)
-//second aproch
 const arr = [1, 2, 3, 5, 4, 5,1];
 let newArr =arr.filter((e, i, a) => a.indexOf(e) !== i)
 
@@ -569,21 +560,15 @@ for (var i = 0; i < arr.length; i++) {
   }, 100);
 }
 
-function convertYearToString(year) {
-    const digits = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
-    const yearStr = year.toString();
-    let result = "";
-    
-    for (let i = 0; i < yearStr.length; i++) {
-        result += digits[parseInt(yearStr[i])];
-    }
-    
-    return result;
+const year = 2024
+const strYear = year.toString()
+const digits = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+let res = ""
+for(let i =0; i< strYear.length; i++){
+     res +=  digits[strYear[i]]
 }
 
-const year = 2024;
-const spokenYear = convertYearToString(year);
-console.log(spokenYear); // Output: "TwoZeroTwoFour"
+console.log(res)
 
 
 //input: 2024
@@ -621,7 +606,7 @@ for (let i = 0; i < array.length; i++) {
 console.log(lowest, secondlowest);
 
 let str = 'How do you do';
-let words = str.match(/\w+/g);
+let words = str.match(/\w+/g); //str.split('')
 let obj = {};
 
 for (let item of words) {
@@ -670,5 +655,75 @@ for (i = 0; i < 5; i++) {
     1000
   );
 }
+
+
+
+
+
+var user = {
+  name: "Vishal",
+  address: {
+    primary: {
+      house: "109",
+      street: {             
+        main: "21",
+        cross: "32"
+      }
+    }
+  }
+};
+
+var flattenedUser = {
+  user_name: user.name,
+  user_address_primary_house: user.address.primary.house,
+  user_address_primary_street_main: user.address.primary.street.main,
+  user_address_primary_street_cross: user.address.primary.street.cross
+};
+
+console.log(flattenedUser);
+
+
+//output
+
+{
+  user_name: "Vishal",
+  user_address_primary_house: "109",
+  user_address_primary_street_main: "21",
+  user_address_primary_street_cross: "32",
+}
+
+
+const arr = ['test', 'test2', 'vikas'];
+//return an object such that array elements are keys and length of the element as value
+//output: {
+ //   test: 4,
+   // test2: 5,
+    //vikas: 5
+//}
+
+
+const obj = arr.reduce((acc, curr) => {
+   acc[curr] =  curr.length;
+   return acc
+},{})
+
+console.log(obj)
+
+const result = [1,2,3].map((a) => {
+ 
+	return a * 2; //should be return otherwise undefined will get
+ 
+});
+
+console.log(result)
+
+  
+const name ="Amrendra Kumar";
+
+let newStr =  name.split(' ')
+let temp= newStr.reverse()
+console.log(temp.join(" "))
+
+
 
 */

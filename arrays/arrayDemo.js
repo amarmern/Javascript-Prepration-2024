@@ -69,7 +69,7 @@ months.splice(1, 0, 'Feb');
 //changes the original array..
 console.log(months); //["Jan", "Feb", "March", "April", "June"]
 
-months.splice(4, 1, 'May');
+months.splice(4, 1, 'May'); // removed second index position element and add on 4th position element.
 console.log(months); //[ 'Jan', 'March', 'apr', 'jun', 'May' ]
 
 //every method
