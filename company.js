@@ -40,21 +40,43 @@ var myrandomnumber = Math.random(Math.round(1));
 console.log(myrandomnumber);
 
 .......service -max ..............
+const arr = [5,7,[4,2,["8","6",[1,"3",[9]]]]];
+let flatArray = [];
 
-let arr = [1, 2, 3, 4, [5, 6, [7, 8]]];
-let res = [];
-function flatArr(arr) {
-  for (let item of arr) {
+function flattenArray(input) {
+  for (const item of input) {
     if (Array.isArray(item)) {
-      flatArr(item);
+      flattenArray(item); // Recursively flatten nested arrays
     } else {
-      res.push(item);
+      flatArray.push(Number(item)); // Convert strings to numbers and push to flatArray
     }
   }
-  return res;
+}
+flattenArray(arr);
+
+// Sort the flat array in descending order
+for (let i = 0; i < flatArray.length; i++) {
+  for (let j = i + 1; j < flatArray.length; j++) {
+    if (flatArray[i] < flatArray[j]) {
+      let temp = flatArray[i];
+      flatArray[i] = flatArray[j];
+      flatArray[j] = temp;
+    }
+  }
 }
 
-console.log(flatArr(arr));
+console.log(flatArray);
+
+var a = 5;
+(() => {
+    var a;        // 'a' is hoisted to the top of this function, but not initialized
+    console.log(a);  // At this point, 'a' is undefined because it hasn't been assigned a value yet
+    a = 10;       // Now, 'a' is assigned the value 10
+})();
+
+
+
+
 
 .............Cognigent........................
 let x = 10;
@@ -289,7 +311,46 @@ for(let i =0; i< arr.length; i++){
 
 console.log(highest)
 
+const array = [3, 10, 7, 5, 25, 2];
+const highest = array.reduce((max, num) => (num > max ? num : max), array[0]);
+console.log("The highest number in the array is:", highest);
 
+
+const array = [3, 10, 7, 5, 25, 2];
+const highest = Math.max(...array);
+console.log("The highest number in the array is:", highest);
+
+const array = [3, 10, 7, 5, 25, 2];
+let highest = array[0];
+
+for (let i = 1; i < array.length; i++) {
+  if (array[i] > highest) {
+    highest = array[i];
+  }
+}
+
+console.log("The highest number in the array is:", highest);
+
+const array = [3, 10, 7, 5, 25, 2];
+
+let highest = 0;
+let secondHighest = 0;
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] > highest) {
+    secondHighest = highest;
+    highest = array[i];
+  } else if (array[i] > secondHighest && array[i] !== highest) {
+    secondHighest = array[i];
+  }
+}
+
+console.log("The second highest number in the array is:", secondHighest);
+
+const sortedArray = [...array].sort((a, b) => b - a);
+const secondHighest = sortedArray[1];
+
+console.log("The second highest number in the array is:", secondHighest);
 ...compnay asked ...
 
 
@@ -724,6 +785,16 @@ let newStr =  name.split(' ')
 let temp= newStr.reverse()
 console.log(temp.join(" "))
 
+ACL
+let arr = [2, -4, -1, 0, 3, 5];
 
+// Separate non-positive and positive numbers while maintaining their order
+let nonPositive = arr.filter(x => x <= 0); // [-4, -1, 0]
+let positive = arr.filter(x => x > 0);     // [2, 3, 5]
+
+// Combine the two arrays
+let result = [...nonPositive, ...positive];
+
+console.log(result); // Output: [0, -4, -1, 2, 3, 5]
 
 */

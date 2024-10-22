@@ -46,6 +46,22 @@ const products = [
 const total = products.reduce((acc, curr) => acc + curr.price, 0);
 console.log(total);
 
+const totalCostByName = products.reduce((acc, product) => {
+    if (!acc[product.name]) {
+        acc[product.name] = 0; // initialize if not already present
+    }
+    acc[product.name] += product.price; // add the price to the respective product
+    return acc;
+}, {});
+
+console.log(totalCostByName);
+
+{
+  macbook: 2000,
+  window: 4000,
+  andriod: 6000
+}
+
 //flatMap
 const friends = [
   { name: 'Anna', books: ['Bible', 'Harry Potter'] },
