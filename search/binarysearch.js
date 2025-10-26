@@ -2,6 +2,13 @@
  * Binary Search - Without using recursive
  * @param arr - Input Array
  * @param searchElement - Element to search
+ * array must be sorted
+ * Repeatedly devide the search interval in half
+ * 1. compare the target with middle element
+ * 2. if target is equal to middle found it
+ * if target is smaller - search the left half (rigth -> mid -1)
+ * if target is greater search the right half (left -> mid +1)
+ * Repeat untill the element found or interval is empty
  */
 function binarySearch(arr, searchElement) {
   let left = 0,

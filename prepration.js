@@ -31,11 +31,11 @@ let arr = ['abc', 'pqr', 'xyz'];
 
 let reversedArr = [];
 for (let i = 0; i < arr.length; i++) {
-  let reversedStr = '';
+  let reversedEle = '';
   for (let j = arr[i].length - 1; j >= 0; j--) {
-    reversedStr += arr[i][j];
+    reversedEle += arr[i][j];
   }
-  reversedArr.push(reversedStr);
+  reversedArr.push(reversedEle);
 }
 console.log(reversedArr); //[ 'cba', 'rqp', 'zyx' ]
 
@@ -54,6 +54,7 @@ for (let i = 1; i < mySentence.length; i++) {
 }
 
 console.log(result);
+//o/p: FreeCodeCamp Is An Awesome Resource
 
 //5...................................................
 
@@ -176,7 +177,7 @@ const items = [
   { name: 'Orange', category: 'Fruit' },
   { name: 'Lettuce', category: 'Vegetable' },
 ];
-
+//o/p : { Fruit: [ 'Apple', 'Orange' ], Vegetable: [ 'Onion', 'Lettuce' ] }
 let obj = {};
 for (let i = 0; i < items.length; i++) {
   let category = items[i].category;
@@ -191,7 +192,7 @@ console.log(obj);
 //14....................................................................................
 
 const array1 = [1, 2, 3, 4, 5];
-
+//pollyfil map
 Array.prototype.customMap = function (callback) {
   let newArray = [];
   for (let i = 0; i < this.length; i++) {
@@ -206,15 +207,15 @@ array1.customMap(function (el) {
 
 //15......................................................................
 
-const char = 'aabcddeee';
+const str = 'aabcddeee';
 
 let obj = {};
 
-for (let i = 0; i < char.length; i++) {
-  if (!obj[char[i]]) {
-    obj[char[i]] = 1;
+for (let i = 0; i < str.length; i++) {
+  if (!obj[str[i]]) {
+    obj[str[i]] = 1;
   } else {
-    obj[char[i]]++;
+    obj[str[i]]++;
   }
 }
 
@@ -320,21 +321,6 @@ while (left < right) {
 }
 
 console.log(arr);
-
-//22.............................................................
-
-let arr = ['abc', 'pqr', 'xyz'];
-
-let reversedArr = [];
-for (let i = 0; i < arr.length; i++) {
-  let reversedStr = '';
-  for (let j = arr[i].length - 1; j >= 0; j--) {
-    reversedStr += arr[i][j];
-  }
-  reversedArr.push(reversedStr);
-}
-
-console.log(reversedArr);
 
 //23.............................................................................
 

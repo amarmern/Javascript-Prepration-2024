@@ -1,16 +1,14 @@
-var fs = require('fs');
-const express = require('express');
-const app = express();
-
-let content = '';
-
-app.get('/', (req, res) => {
-  fs.readFile('./JAVASCRIPT-TASK/test.tsx', 'utf-8', (err, data) => {
-    content += data;
-  });
-  res.status(200).json({
-    data: {
-      content,
-    },
-  });
-});
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    // swap
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+  }
+  return arr;
+}
+console.log(selectionSort([5, 3, 4, 1, 2]));

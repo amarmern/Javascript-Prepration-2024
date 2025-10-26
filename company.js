@@ -797,4 +797,128 @@ let result = [...nonPositive, ...positive];
 
 console.log(result); // Output: [0, -4, -1, 2, 3, 5]
 
+ktapiller
+let x = [1, 2, 3];
+
+let y = [1, 2, 3];
+
+let z = y;
+
+console.log(x == y);//output 
+
+console.log(x === y);
+
+console.log(z == y);
+
+console.log(z == x);
+ 
+console.log(2 + true);
+ 
+console.log(NaN === NaN);
+ 
+console.log(null == undefined);
+ 
+for (var i = 0; i < 5; i++) {setTimeout(() => console.log(i))}
+ 
+for (let i = 0; i < 5; i++) {setTimeout(() => console.log(i))}
+ 
+function* generatorFunction() {
+
+  yield 1;
+
+  yield 2;
+
+  return 3;
+
+}
+ 
+const generator = generatorFunction();
+ 
+console.log(generator.next());
+
+console.log(generator.next());
+
+console.log(generator.next());
+ ]
+
+
+ /// Ellilly
+
+ function x(){
+  let a = 1;
+  if(true){
+  let a = 2;
+    console.log("inside",a);
+  }
+  console.log("outside",a);
+}
+x();
+
+// function example() {
+//   console.log('1 ', a); 
+// }
+// console.log('2', a); 
+// let a = 1;
+// example();
+
+// function a() {
+//   console.log('1');
+// }
+// a();
+// function a() {
+//   console.log('2');
+// }
+// a();
+
+console.log(a());
+function a() {
+  var b = function() {
+    return 3;
+  };
+  return b();
+  var b = function() {
+    return 8;
+  };
+}
+
+for (let i = 0; i < 10; i++) {
+  ((i) => {
+    setInterval(() => {
+      console.log(i);
+    }, i * 1000);
+  })(i);
+}
+
+function sum(...input){
+  let res = 0
+  for(let i of input){
+    res += i
+  }
+  return res
+}
+
+sum(1,2,3,4,5,6)
+
+// let obj = {name: "test"}
+
+// let obj1  = {...obj, "test2"}
+
+let obj3 = {
+  name: 'test3',
+  address: {
+    pin: '1223',
+    contact: {
+      mobile: '766765765',
+    },
+  },
+};
+
+let test1 = JSON.parse(JSON.stringify(obj3));
+
+test1.address.pin = '46567';
+console.log(test1);
+
+test1.address.contact.mobile = '8787576';
+console.log(test1);
+
 */

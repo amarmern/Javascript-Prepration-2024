@@ -5,6 +5,11 @@ const numbers = [1, 2, 3, 4, 2, 5, 4, 6];
 let newArra = numbers.forEach((el) => el);
 
 console.log(newArra);
+sollution is:
+const numbers = [1, 2, 3, 4, 2, 5, 4, 6];
+
+numbers.forEach((number) => console.log(number));
+
 
 //map mehtod
 
@@ -46,21 +51,42 @@ const products = [
 const total = products.reduce((acc, curr) => acc + curr.price, 0);
 console.log(total);
 
-const totalCostByName = products.reduce((acc, product) => {
-    if (!acc[product.name]) {
-        acc[product.name] = 0; // initialize if not already present
-    }
-    acc[product.name] += product.price; // add the price to the respective product
-    return acc;
+const products = [
+  { name: 'apple', price: 2 },
+  { name: 'banana', price: 1 },
+  { name: 'apple', price: 3 },
+  { name: 'banana', price: 2 },
+  { name: 'orange', price: 4 },
+];
+
+const sum = products.reduce((acc, curr) => {
+  if (!acc[curr.name]) {
+    acc[curr.name] = 0;
+  }
+  acc[curr.name] += curr.price;
+  return acc;
 }, {});
 
-console.log(totalCostByName);
+console.log(sum);
 
-{
-  macbook: 2000,
-  window: 4000,
-  andriod: 6000
+//second way
+let obj = {};
+for (let i = 0; i < products.length; i++) {
+  if (!obj[products[i].name]) {
+    obj[products[i].name] = 0;
+  }
+  obj[products[i].name] += products[i].price;
 }
+//or
+for(let prod of products){
+    if(!obj[prod.name]){
+        obj[prod.name] =0
+    }
+    obj[prod.name] += prod.price
+}
+console.log(obj);
+{ apple: 5, banana: 3, orange: 4 }
+
 
 //flatMap
 const friends = [
