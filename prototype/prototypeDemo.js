@@ -1,20 +1,19 @@
-function Person(name, age, gender) {
-  this.name = name;
-  this.age = age;
-  this.gender = gender;
+function Person(fname, lname) {
+  this.fname = fname;
+  this.lname = lname;
 }
-
-let newObj = new Person('amar', 35, 'male');
-let myFather = new Person('suchit', 70, 'M');
-
-//adding the property;
-
-Person.prototype.occupation = 'SE';
-
-// adding the methods
-
-Person.prototype.greet = function () {
-  console.log('hello ,', this.name, this.occupation);
+Person.prototype.greets = function () {
+  return `Welcome ${this.fname} ${this.lname}`;
 };
 
-newObj.greet();
+let person1 = new Person('Amrendra', 'Kumar');
+console.log(person1.greets.call(person1));
+//inherits
+function Developer(fname, lname, tech, sal) {
+  Person.call(this, fname, lname);
+  this.tech = tech;
+  this.sal = sal;
+}
+Developer.prototype.constructor = Developer;
+const developer = new Developer('amrendra', 'kumar', 'js', '40');
+console.log(developer);

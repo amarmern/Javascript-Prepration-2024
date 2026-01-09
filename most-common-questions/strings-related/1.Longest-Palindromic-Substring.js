@@ -22,3 +22,14 @@ function longestPalindrome(s) {
 }
 
 console.log(longestPalindrome(s));
+
+//sample palindrom check
+
+// ... palindrom check.....
+let str = 'aba';
+let store = '';
+
+for (let i = str.length; i >= 0; i--) {
+  store += str.charAt(i);
+}
+store == str ? console.log('Palindrom') : console.log('not a plindropm');
