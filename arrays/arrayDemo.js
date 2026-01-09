@@ -313,21 +313,6 @@ for (let i = 0; i < users.length; i++) {
 }
 console.log(obj); //{ ECE: 3, CSE: 2, IT: 1 }
 
-console.log(sumArray([2, 3, 1, 1, -1, 3, 4], 7)); //[4,3]
-
-function sumArray(arr, sum) {
-  let obj = {};
-  for (let i = 0; i < arr.length; i++) {
-    let firstEl = arr[i];
-    let secondEle = sum - firstEl;
-    if (obj[secondEle]) {
-      console.log(firstEl, secondEle);
-    } else {
-      obj[firstEl] = 1;
-    }
-  }
-}
-
 const arr = [1, 0, 0, 1, 0, 1];
 
 function segeration01(arr) {
