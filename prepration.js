@@ -25,37 +25,6 @@ function sum(a) {
   };
 } //15
 
-//3........................................
-
-let arr = ['abc', 'pqr', 'xyz'];
-
-let reversedArr = [];
-for (let i = 0; i < arr.length; i++) {
-  let reversedEle = '';
-  for (let j = arr[i].length - 1; j >= 0; j--) {
-    reversedEle += arr[i][j];
-  }
-  reversedArr.push(reversedEle);
-}
-console.log(reversedArr); //[ 'cba', 'rqp', 'zyx' ]
-
-//4........................................
-
-const mySentence = 'freeCodeCamp is an awesome resource';
-
-let result = mySentence[0].toUpperCase();
-
-for (let i = 1; i < mySentence.length; i++) {
-  if (mySentence[i - 1] === ' ') {
-    result += mySentence[i].toUpperCase();
-  } else {
-    result += mySentence[i];
-  }
-}
-
-console.log(result);
-//o/p: FreeCodeCamp Is An Awesome Resource
-
 //5...................................................
 
 console.log(fun(1, 2, 3, 4, 5));

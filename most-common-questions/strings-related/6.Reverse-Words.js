@@ -1,24 +1,31 @@
 //Reverse Words but Keep Order
 //Input: "I love JavaScript"
 //Output: "I evol tpircSavaJ"
-
-function reverseWords(str) {
-  var res = '';
-  var word = '';
-
-  for (var i = 0; i <= str.length; i++) {
-    if (str[i] === ' ' || i === str.length) {
-      for (var j = word.length - 1; j >= 0; j--) {
-        res += word[j];
-      }
-      if (i !== str.length) res += ' ';
-      word = '';
-    } else {
-      word += str[i];
-    }
+//Note: for reverse string we can write this code
+let reversedStr = [];
+for (let i = 0; i < str.length; i++) {
+  let reversedEle = '';
+  for (let j = str[i].length - 1; j >= 0; j--) {
+    reversedEle += str[i][j];
   }
-  return res;
+  reversedStr.push(reversedEle);
 }
+console.log(reversedStr.join(' '));
+
+//........................///////////////////
+//for reverse the array we can write this code
+
+let arr = ['abc', 'pqr', 'xyz'];
+let reversedArr = [];
+for (let i = 0; i < arr.length; i++) {
+  let reversedEle = '';
+  for (let j = arr[i].length - 1; j >= 0; j--) {
+    reversedEle += arr[i][j];
+  }
+  reversedArr.push(reversedEle);
+}
+console.log(reversedArr); //[ 'cba', 'rqp', 'zyx' ]
+
 //..............................................................................................
 // str1 = 'I am Kumar';
 // str2 = 'I ma ramuK';

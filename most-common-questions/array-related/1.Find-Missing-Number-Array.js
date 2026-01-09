@@ -15,3 +15,20 @@ function findMissingNumber(arr) {
 const arr = [1, 2, 5, 4, 6, 8, 7];
 const missingNumber = findMissingNumber(arr);
 console.log('Missing Number: ', missingNumber);
+
+//..............
+
+//....missing number from array...using math function ...........
+var array = [9, 1, 5, 8, 7, 4, 3, 0, 10, 13, 15, 19, 12, 16, 18]; // Missing 2,6,11,14,17
+
+var length = Math.max.apply(this, array);
+
+let missing = [];
+
+for (let i = 0; i < length; i++) {
+  if (array.indexOf(i) < 0) {
+    missing.push(i);
+  }
+}
+
+console.log(missing);

@@ -103,14 +103,14 @@ console.log(b);
 let str = 'aba';
 
 let res = '';
-const PalindrumCheck = (str) => {
+const palindrumCheck = (str) => {
   for (let i = str.length; i >= 0; i--) {
     res += str.charAt(i);
   }
   res === str ? console.log('Palindrum') : console.log('not a palindrom');
 };
 
-PalindrumCheck(str);
+palindrumCheck(str);
 
 //wissen ..
 const users = [
@@ -920,5 +920,44 @@ console.log(test1);
 
 test1.address.contact.mobile = '8787576';
 console.log(test1);
+
+//2026
+
+function maskCardNumber(cardNumber, unmaskedStart = 4, unmaskedEnd = 4) {
+  if (!cardNumber || cardNumber.length <= unmaskedStart + unmaskedEnd) {
+    return cardNumber;
+  }
+
+  const start = cardNumber.slice(0, unmaskedStart);
+  const end = cardNumber.slice(cardNumber.length - unmaskedEnd);
+
+  const masked = '*'.repeat(cardNumber.length - (unmaskedStart + unmaskedEnd));
+  console.log(`${start}${masked}${end}`);
+}
+maskCardNumber('4111111111111111');
+
+
+//altimetric
+
+
+function longestCommonPrefix(strs) {
+  if (strs.length === 0) return "";
+
+  for (let i = 0; i < strs[0].length; i++) {
+    let char = strs[0][i];
+
+    for (let j = 1; j < strs.length; j++) {
+      if (strs[j][i] !== char) {
+        return strs[0].substring(0, i);
+      }
+    }
+  }
+
+  return strs[0];
+}
+
+// Test cases
+console.log(longestCommonPrefix(["flower","flow","flight"])); // "fl"
+console.log(longestCommonPrefix(["dog","racecar","car"]));    // ""
 
 */
