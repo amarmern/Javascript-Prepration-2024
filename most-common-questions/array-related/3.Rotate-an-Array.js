@@ -1,4 +1,5 @@
 let arr = [1, 2, 3, 4, 5, 6];
+//let arr = ['a','b','c','d']; charchter also can be rotated
 let d = 2;
 
 function rotateArray(arr, d) {

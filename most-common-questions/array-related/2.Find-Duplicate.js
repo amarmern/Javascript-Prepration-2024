@@ -13,7 +13,7 @@ Iterate through the array, updating the frequency count for each element in the 
 // using hashmap
 
 function findDuplicates(arr) {
-  // Step 1: Create an empty object to store
+  // Step 1: Create an empty array and hash map object  to store
   // element frequencies
   let obj = {};
   let newArr = [];
