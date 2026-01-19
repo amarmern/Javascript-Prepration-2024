@@ -1,0 +1,19 @@
+//Find 2nd Highest Salary
+
+select max(salary) from employee
+where salary < (select max(salary) from employee)
+
+//Find duplicate records
+
+SELECT email, COUNT(*)
+FROM users
+GROUP BY email
+HAVING COUNT(*) > 1
+
+
+DELETE FROM users
+WHERE id NOT IN (
+  SELECT MIN(id)
+  FROM users
+  GROUP BY email
+);

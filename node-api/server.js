@@ -11,12 +11,7 @@ let users = [
 const server = http.createServer((req, res) => {
   // set the header
   res.hasHeader('Content-Type', 'application/json');
-
   if (req.method === 'GET' && req.url === '/api/user') {
-    // const responseData = {
-    //   message: 'Hello from http server',
-    //   timeStamp: new Date().toISOString(),
-    // };
     res.statusCode = 200;
     res.end(JSON.stringify(users));
   } else if (req.method === 'POST' && req.url === '/api/user') {

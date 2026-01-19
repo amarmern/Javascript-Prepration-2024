@@ -3,7 +3,7 @@ dotenv.config();
 import { EventQOSfactory } from './scr';
 
 async () => {
-  await EventQOSfactory.createAtLeatOnce()
+  await EventQOSfactory.createAtLeatOnce() //createAtmostOnce, createExactlyonce
     .getConsumer({
       groupId: 'ENBD-Leap',
       topic: ['account-ebi'],
