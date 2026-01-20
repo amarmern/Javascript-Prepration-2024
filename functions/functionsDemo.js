@@ -219,3 +219,9 @@ Array.prototype.calculate = function (logic) {
 console.log(radius.calculate(area));
 
 console.log(radius.map(area));
+
+for (var i = 0; i < 5; i++) {
+  (function (i) {
+    setTimeout(() => console.log(i));
+  })(i);
+}
