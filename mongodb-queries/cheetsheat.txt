@@ -153,7 +153,205 @@ also toArray() that return all the documents internally
 
 > db.customer.find().toArray()
 
+[
+ {
+ "maker": "Hyundai",
+ "model": "Creta",
+ "fuel_type": "Diesel",
+ "transmission": "Manual",
+ "engine": {
+ "type": "Naturally Aspirated",
+ "cc": 1493,
+ "torque": "250 Nm"
+ },
+ "features": [
+ "Sunroof",
+ "Leather Seats",
+ "Wireless Charging",
+"Ventilated Seats",
+"Bluetooth"
+ ],
+ "sunroof": true,
+ "airbags": 6
+ },
+ {
+ "maker": "Maruti Suzuki",
+ "model": "Baleno",
+ "fuel_type": "Petrol",
+ "transmission": "Automatic",
+ "engine": {
+ "type": "Naturally Aspirated",
+ "cc": 1197,
+ "torque": "113 Nm"
+ },
+ "features": [
+ "Projector Headlamps",
+ "Apple CarPlay",
+ "ABS"
+ ],
+ "sunroof": false,
+ "airbags": 2
+ },
+ {
+ "maker": "Mahindra",
+ "model": "XUV500",
+ "fuel_type": "Diesel",
+ "transmission": "Manual",
+ "engine": {
+ "type": "Turbocharged",
+ "cc": 2179,
+ "torque": "360 Nm"
+ },
+ "features": [
+ "All-Wheel Drive",
+ "Navigation System",
+ "Cruise Control"
+ ],
+ "sunroof": true,
+ "airbags": 6
+ },
+ {
+ "maker": "Honda",
+ "model": "City",
+ "fuel_type": "Petrol",
+ "transmission": "Automatic",
+ "engine": {
+ "type": "Naturally Aspirated",
+ "cc": 1498,
+ "torque": "145 Nm"
+ },
+ "features": [
+ "Keyless Entry",
+ "Auto AC",
+ "Multi-angle Rearview Camera"
+ ],
+ "sunroof": false,
+ "airbags": 4
+ }
+]
 
+
+>db["car-sample"].find({},{model:1,_id:0})
+
+// update the data form list 
+>db.car.updateOne({model:'Nexon'},{$push/pull: {feature}}) 
+
+//update one
+>db.car.updateOne({fuel_type: "Diesel"},{$set: {alloys: "yes"}})
+//update many
+>db.car.updateMany({fuel_type: "Diesel"},{$set: {alloys: "yes"}})
+
+//update Multiple values from Array
+
+db.car.updateOne({model:'Nexon'},
+        {$push: {features: {$each: ["Wireless Charging","Voice Control"]}}}
+);
+
+// unset from update means remod=ve the field
+we can use $unset
+
+delete the records
+
+db.car.deleteOne({fuel_type:"Petrol"})
+db.car.deleteMany({fuel_type:"Petrol"})
+
+find more than one engine of cc
+db.car.find({"engine.cc":{$in:[1498,2179]}})
+
+Aggregation is a powerful framework for
+Complex operations like filtering, grouping, sorting, reshaping, and
+summarizing data in a flexible way via pipeline. 
+
+
+MPrashant
+
+db.collection.aggregate(
+
+       [
+
+         {stage1}, 
+
+         {stage2}...
+
+       ], {option}
+
+     )
+
+db.orders.aggregate([
+    //stage 1: filtere pizza order document by pizza size
+    {
+        $match: { size: 'meduim'}
+    },
+    // stage2
+    {
+        $group: { _id: "$name", totalQuantity: { $sum: "$quantity"}}
+    }
+])     
+
+most comnaly stages aggregate
+$match
+
+$group
+
+$project
+
+$sort
+
+$limit
+
+$unwind
+
+$lookup
+
+$addFields
+
+$count
+
+$skip
+
+No of cars of each brands
+
+db.cars.aggregate([
+
+        { $group: 
+
+                       { _id: "$maker", 
+
+                          TotalCars: { $sum: 1 }
+
+                        } 
+
+                   }] )
+
+
+>db.cars.aggregate([{$match:{maker:"Hyundai","engine.cc":{$gt:1000}}}])
+>db.teachers.aggregate([{$match: {gender: "male"}}])
+
+db.users.aggregate([
+    {
+        $lookup:{
+            from : 'orders',
+            localField: '_id',
+            foreign_field: "user_id",
+            ad: "user_order"
+        }
+    }
+])
+
+// it will give the result in Array of array element to solve this we can use
+
+
+db.users.aggregate([
+    {
+        $lookup:{
+            from : 'orders',
+            localField: '_id',
+            foreign_field: "user_id",
+            ad: "user_orders"
+        }
+    },
+    {$unwind: "user_orders}
+])
 
 
 
