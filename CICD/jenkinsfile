@@ -1,0 +1,33 @@
+// jenkinsfile to be incuded in application source repo
+
+node {
+// Tech support :: node jS , springboot
+ENV_TECH_STACK = "nodejs"
+ENV_NODE_APPJS_PATH = './dist/src/app.js'
+
+// CONTAINER NAME
+ENV_APPLICATION_NAME = "visa-card"
+
+ENV_TECH_VERSION: "V16"
+
+ENV_API_TESTCASES_REPOSITORY_URL = "githuburl"
+ENV_API_TESTCASES_REPOSITORY_REF = "Release"
+
+// if the jobs fails in any of the static code check , email will be triggered to the below mentione email id
+ENV_DEVELOPER_EMAILID = "test@mail.com"
+
+
+// Route path
+
+ENV_ROUTE_CONTEXT_PATH="/banking/visa-card"
+
+ENV_SOURCE_TYPE = 'BuildInSit'
+
+/* valid builds types 
+ BuidInDev - execute the pipeline for dev env and that include the code check, builds from development branch and deploy in dev env.
+ BuildInSit execute the pipeline for sit env and enclude all checks, build from Release branch Deploy in SIT Env.
+ DeployInProd - skip all stages and reads prod-configMapFIle from Git and deploys in production with lates image(code changes)
+
+
+*/
+}
