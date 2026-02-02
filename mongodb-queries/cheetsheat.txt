@@ -355,6 +355,139 @@ db.users.aggregate([
 
 
 
+db.orders.insertMany([
+  { user: "Amit", product: "Mobile", amount: 20000, status: "completed" },
+  { user: "Amit", product: "Laptop", amount: 60000, status: "completed" },
+  { user: "Rahul", product: "Mobile", amount: 18000, status: "pending" },
+  { user: "Rahul", product: "TV", amount: 40000, status: "completed" },
+  { user: "Neha", product: "Mobile", amount: 22000, status: "completed" }
+]);
+
+
+db.orders.aggregate([
+  { $match: { status: "completed" } }
+]);
+
+db.orders.aggregate([
+  {
+    $project: {
+      customer: "$user",
+      totalAmount: "$amount",
+      _id: 0
+    }
+  }
+]);
+
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$user",
+      totalSpent: { $sum: "$amount" }
+    }
+  },
+  { $sort: { totalSpent: -1 } }
+]);
+
+//top 2 users
+db.orders.aggregate([
+  { $sort: { amount: -1 } },
+  { $limit: 2 }
+]);
+
+
+db.users.insertMany([
+  { _id: 1, name: "Amit" },
+  { _id: 2, name: "Rahul" }
+]);
+
+db.orders.insertMany([
+  { userId: 1, product: "Mobile", amount: 20000 },
+  { userId: 2, product: "TV", amount: 40000 }
+]);
+
+//Join users with orders
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "userId",
+      foreignField: "_id",
+      as: "userDetails"
+    }
+  }
+]);
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "userId",
+      foreignField: "_id",
+      as: "userDetails"
+    }
+  },
+  {$unwind: "$userDetails"}
+]);
+//$unwind – Flatten Array
+db.orders.aggregate([
+  { $match: { status: "completed" } },
+  {
+    $group: {
+      _id: "$user",
+      totalAmount: { $sum: "$amount" }
+    }
+  },
+  { $sort: { totalAmount: -1 } }
+]);
+//Categorize orders as High / Medium / Low value
+db.orders.aggregate([
+  { $match: { status: "completed" } },
+  {
+    $group: {
+      _id: "$user",
+      totalAmount: { $sum: "$amount" }
+    }
+  },
+  { $sort: { totalAmount: -1 } }
+]);
+
+//Basic Pagination using $skip & $limit
+//skip = (pageNumber - 1) * pageSize
+
+
+//Backend API Style Response (Node.js)
+
+const result = await db.collection("orders").aggregate(pipeline).toArray();
+
+const total = result[0].totalCount[0]?.count || 0;
+
+return {
+  data: result[0].data,
+  page,
+  limit,
+  totalPages: Math.ceil(total / limit),
+  totalRecords: total
+};
+
+//Pagination with Filters + Sorting (Real API)
+
+db.orders.aggregate([
+  { $match: { status: "completed" } },
+  { $sort: { createdAt: -1 } },
+  { $skip: (page - 1) * limit },
+  { $limit: limit },
+  {
+    $project: {
+      user: 1,
+      amount: 1,
+      createdAt: 1
+    }
+  }
+]);
+
+
+
 
 
 
