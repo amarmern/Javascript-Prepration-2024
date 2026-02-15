@@ -1,6 +1,7 @@
 const cluster = require('cluster');
 const os = require('os');
 const express = require('express');
+const status = require('express-status-monitor');
 
 const numCPUs = os.cpus().length;
 
@@ -22,8 +23,8 @@ if (cluster.isMaster) {
   app.get('/', (req, res) => {
     res.status(200).send('succees');
   });
-
+  app.use(status());
   app.listen(PORT, () =>
-    console.log(`service is running http://localhost:${PORT}`)
+    console.log(`service is running http://localhost:${PORT}`),
   );
 }

@@ -5,17 +5,14 @@ const app = express();
 function middleware1(req, res, next) {
   // Set data
   req.dataFromMiddleware1 = 'Data of Middleware 1';
-
   // Go to next middleware
   next();
 }
 
 function middleware2(req, res, next) {
   console.log('We are in Middleware 2.');
-
   // Get Data of Middleware1
   console.log(req.dataFromMiddleware1);
-
   // Go to next middleware
   next();
 }

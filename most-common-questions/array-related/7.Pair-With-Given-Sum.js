@@ -23,21 +23,34 @@ Space Complexity: O(n) - hashmap to store elements
 // - If it isn’t, add the current number to the set.
 // If the loop completes without finding a pair, return that no pair exists.
 
-function twoSum(arr, sum) {
-  // Create a Map to store seen numbers and their indices
-  let obj = {};
-  for (let i = 0; i < arr.length; i++) {
-    let firstEl = arr[i];
-    let secondEle = sum - firstEl;
-    // Check if the complement already exists in the map
-    if (obj[secondEle]) {
-      // Pair found: return the complement and the current number, or their indices
-      return [firstEl, secondEle];
+console.log(twoSum([2, 7, 11, 15], 9)); // [0,1]
+
+function twoSum(nums, target) {
+  let map = {};
+  for (let i = 0; i < nums.length; i++) {
+    let firstEle = nums[i];
+    let secondEle = target - firstEle;
+    if (map[secondEle] !== undefined) {
+      return [firstEle, secondEle];
     } else {
-      // if not found complement set tho the next array of index value
-      obj[firstEl] = arr[i];
+      map[nums[i]] = i;
     }
   }
 }
 
 console.log(twoSum([2, 3, 1, 1, -1, 3, 4], 7));
+
+console.log(twoSum([2, 7, 11, 15], 9)); // [0,1]
+
+function twoSum(nums, target) {
+  let map = {};
+  for (let i = 0; i < nums.length; i++) {
+    let firstEle = nums[i];
+    let secondEle = target - firstEle;
+    if (map[secondEle] !== undefined) {
+      return [map[secondEle], i];
+    } else {
+      map[nums[i]] = i;
+    }
+  }
+}

@@ -311,17 +311,7 @@ $skip
 
 No of cars of each brands
 
-db.cars.aggregate([
-
-        { $group: 
-
-                       { _id: "$maker", 
-
-                          TotalCars: { $sum: 1 }
-
-                        } 
-
-                   }] )
+db.cars.aggregate([ { $group:{ _id: "$maker",  TotalCars: { $sum: 1 } } }] )
 
 
 >db.cars.aggregate([{$match:{maker:"Hyundai","engine.cc":{$gt:1000}}}])
@@ -473,7 +463,7 @@ return {
 //Pagination with Filters + Sorting (Real API)
 
 db.orders.aggregate([
-  { $match: { status: "completed" } },
+  { $match: { status: "Transaction completed" } },
   { $sort: { createdAt: -1 } },
   { $skip: (page - 1) * limit },
   { $limit: limit },

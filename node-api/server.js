@@ -1,18 +1,23 @@
 const http = require('http');
-const url = require('url');
-
-const PORT = 3000;
-
 let users = [
   { id: 1, name: 'Amrendra' },
   { id: 2, name: 'Kumar' },
 ];
-
 const server = http.createServer((req, res) => {
-  // set the header
-  res.hasHeader('Content-Type', 'application/json');
-  if (req.method === 'GET' && req.url === '/api/user') {
-    res.statusCode = 200;
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS',
+  );
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  let body = '';
+  if (req.method == 'GET' && req.url == '/api/users') {
+    res.status = 200;
     res.end(JSON.stringify(users));
   } else if (req.method === 'POST' && req.url === '/api/user') {
     let body = '';
@@ -26,8 +31,8 @@ const server = http.createServer((req, res) => {
         res.statusCode = 201; // created
         res.end(JSON.stringify({ users: parseData, status: 'Success' }));
       } catch (error) {
-        (res.statusCode = 400),
-          res.end(JSON.stringify({ error: 'Invalid JSON body' }));
+        ((res.statusCode = 400),
+          res.end(JSON.stringify({ error: 'Invalid JSON body' })));
       }
     });
   } else {
@@ -37,6 +42,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`server running on http://localhost:${PORT}`);
+server.listen((PORT = 5000), () => {
+  console.log(`Server is runnig on PORT ${PORT}`);
 });

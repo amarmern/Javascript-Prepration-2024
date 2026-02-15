@@ -64,10 +64,10 @@ Insertion sort requires O(1) additional space, making it a space-efficient sorti
 for (let i = 1; i < arr.length; i++) {
   for (let j = i; j > 0; j--) {
     if (arr[j] < arr[j - 1]) {
-      //[arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
-      let temp = arr[j];
-      arr[j] = arr[j - 1];
-      arr[j - 1] = temp;
+      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+      // let temp = arr[j];
+      // arr[j] = arr[j - 1];
+      // arr[j - 1] = temp;
     } else {
       break;
     }
@@ -78,15 +78,16 @@ console.log(arr);
 
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
-    let key = arr[i];
-    let j = i - 1;
-    //move elements greater than key to one positon ahead
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j--;
+    let temp = arr[i];
+    let j = i - 1; // j index will i -1 =
+    //move elements greater than temp to one positon ahead
+    // compare the temp value from sorted arrays
+    while (j >= 0 && arr[j] > temp) {
+      arr[j + 1] = arr[j]; // shift in right by one position , since arr[j] > temp
+      j--; // decrement the position by 1 to grt the appropriate
     }
-    arr[j + 1] = key;
+    arr[j + 1] = temp; // place the temp value to correct position of array
   }
-  return arr;
+  return arr; // return the final array
 }
 console.log(insertionSort([5, 3, 4, 1, 2]));

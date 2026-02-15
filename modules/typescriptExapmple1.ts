@@ -17,3 +17,15 @@ router.post((req: Request, res: Response) => {
 
   res.status(201).json(task);
 });
+
+//// second 
+interface PersonProp {
+name: String,
+id: Number
+}
+
+User<PersonProp> person = new Person({
+name : "Amrendra"
+id: 1234
+})
+console.log(person)

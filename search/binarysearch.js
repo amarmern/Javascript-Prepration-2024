@@ -17,7 +17,7 @@ function binarySearch(arr, searchElement) {
   while (left <= right) {
     // Process until it is last element
 
-    let mid = Math.floor((left + right + 1) / 2); // using floor as we may get floating numbers
+    let mid = Math.floor((left + right) / 2); // using floor as we may get floating numbers
 
     if (arr[mid] === searchElement) {
       // element found at mid

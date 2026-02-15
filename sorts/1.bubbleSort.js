@@ -1,13 +1,16 @@
 let arr = [64, 34, 25, 12, 22, 11, 90];
 
 for (let i = 0; i < arr.length; i++) {
+  // 2.nd to avoid the pass
   let swapped = false;
-  for (let j = 0; j < arr.length; j++) {
+  // 1. to avaid the unnecessary compare we can write arr.length-1-i for j loop
+  for (let j = 0; j < arr.length - 1 - i; j++) {
     if (arr[j] > arr[j + 1]) {
       [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       swapped = true;
     }
   }
+  // already swapped then well no be pass for another
   if (!swapped) {
     break;
   }
