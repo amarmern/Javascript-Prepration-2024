@@ -1,3 +1,6 @@
+// The idea is to find length of longest substring with distinct characters starting from every index
+// and maximum of all such lengths will be our answer.
+
 function lengthOfLongestSubstring(str) {
   let visited = {};
   let left = 0;
@@ -7,7 +10,7 @@ function lengthOfLongestSubstring(str) {
     let ch = str[right];
 
     if (visited[ch] !== undefined && visited[ch] >= left) {
-      left = visited[ch] + 1;
+      left = visited[ch] + 1; //  left will shifted by 1 position
     }
 
     visited[ch] = right;

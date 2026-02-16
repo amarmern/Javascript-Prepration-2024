@@ -1,15 +1,17 @@
-const array = [4, 1, 7, -1, 2, 3];
-
-let lowest = 0;
-let secondLoWest = 0;
-
-for (let i = 0; i < array.length; i++) {
-  if (array[i] < lowest) {
-    secondLoWest = lowest;
-    lowest = array[i];
-  } else if (array[i] < secondLoWest && array[i] != lowest) {
-    secondLoWest = array[i];
+function stringPetterSearch(text, pattern) {
+  let count = 0;
+  for (let i = 0; i < text.length; i++) {
+    for (let j = 0; j < pattern.length; j++) {
+      if (text[i + j] !== pattern[j]) {
+        break;
+      }
+      if (pattern.length - 1 === j) {
+        count++;
+      }
+    }
   }
+
+  return count;
 }
 
-console.log(secondLoWest);
+console.log(stringPetterSearch('lollipop', 'lol'));

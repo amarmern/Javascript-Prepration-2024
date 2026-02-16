@@ -33,7 +33,7 @@ function twoSum(nums, target) {
     if (map[secondEle] !== undefined) {
       return [firstEle, secondEle];
     } else {
-      map[nums[i]] = i;
+      map[firstEle] = i;
     }
   }
 }

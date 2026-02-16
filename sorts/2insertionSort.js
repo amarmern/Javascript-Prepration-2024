@@ -79,7 +79,7 @@ console.log(arr);
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let temp = arr[i];
-    let j = i - 1; // j index will i -1 =
+    let j = i - 1; // j index will i -1 = 0
     //move elements greater than temp to one positon ahead
     // compare the temp value from sorted arrays
     while (j >= 0 && arr[j] > temp) {
