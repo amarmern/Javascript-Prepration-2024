@@ -350,6 +350,9 @@ if (p3Obj) {
 }
 
 console.log(A);
+// or..
+const res =A.map((item) =>(item.name === "p2" ?{...item, count: item.count+1 } : item))
+console.log(res)
 
 /// using index 
 

@@ -1,0 +1,27 @@
+---second higest salary from employee table
+
+select max(salary) as "second higest salary"
+from employee
+where salary < (select max(salary) from employee);
+
+// self Join
+
+select e.empname as employee, m.empname as manager
+from employee e 
+join employee M
+on e.empid = m.managerid
+
+// duplicate records
+
+select email, count(*) 
+from employee
+group by email
+having count(*) > 1
+
+// Delete duplicate records
+
+
+
+
+
+

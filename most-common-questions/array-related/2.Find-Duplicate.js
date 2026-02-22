@@ -11,6 +11,28 @@ Iterate through the array, updating the frequency count for each element in the 
 
 // JavaScript code to find duplicates in an array
 // using hashmap
+var containsDuplicate = function (nums) {
+  let duplicate = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums.indexOf(nums[i]) !== i) {
+      duplicate.push(nums[i]);
+    }
+  }
+
+  return duplicate;
+};
+
+var containsDuplicate = function (nums) {
+  let duplicate = [];
+  nums.forEach((item, index) => {
+    if (nums.indexOf(item) !== index && duplicate.indexOf(item) === -1) {
+      duplicate.push(item);
+    }
+  });
+  return duplicate;
+};
+
+console.log(containsDuplicate([1, 2, 3, 1]));
 
 function findDuplicates(arr) {
   // Step 1: Create an empty array and hash map object  to store
