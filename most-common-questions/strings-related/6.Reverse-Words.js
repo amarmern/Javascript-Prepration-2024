@@ -2,15 +2,20 @@
 //Input: "I love JavaScript"
 //Output: "I evol tpircSavaJ"
 //Note: for reverse string we can write this code
-let reversedStr = [];
-for (let i = 0; i < str.length; i++) {
-  let reversedEle = '';
-  for (let j = str[i].length - 1; j >= 0; j--) {
-    reversedEle += str[i][j];
+console.log(reversedStr('I love JavaScript'));
+
+function reversedStr(str) {
+  let reversedStr1 = [];
+  str = str.split(' ');
+  for (let i = 0; i < str.length; i++) {
+    let strChar = '';
+    for (let j = str[i].length - 1; j >= 0; j--) {
+      strChar += str[i][j];
+    }
+    reversedStr1.push(strChar);
   }
-  reversedStr.push(reversedEle);
+  return reversedStr1.join(' ');
 }
-console.log(reversedStr.join(' '));
 
 //........................///////////////////
 //for reverse the array we can write this code

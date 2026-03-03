@@ -14,6 +14,7 @@ function Developer(fname, lname, tech, sal) {
   this.tech = tech;
   this.sal = sal;
 }
+Developer.prototype = Person;
 Developer.prototype.constructor = Developer;
 const developer = new Developer('amrendra', 'kumar', 'js', '40');
 console.log(developer);

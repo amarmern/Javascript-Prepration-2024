@@ -24,7 +24,7 @@ to show the collections
 > show Collections
 
 to delete the collection.
-> db.collectionName.drop()
+> db.student.drop()
 
 ... Rows/ fields commands..
 
@@ -70,6 +70,9 @@ db.comments.update({name: 'Rohan'},
 {$rename:{
     member_since: 'member'
 }})
+
+Mongodb Rename db name:
+> db.students.renameCollection("student")
 
 Delete Row (deleteOne, deleteMany, findOneAndDelete)
 
@@ -323,7 +326,7 @@ db.users.aggregate([
             from : 'orders',
             localField: '_id',
             foreign_field: "user_id",
-            ad: "user_order"
+            as: "user_order"
         }
     }
 ])
@@ -337,7 +340,7 @@ db.users.aggregate([
             from : 'orders',
             localField: '_id',
             foreign_field: "user_id",
-            ad: "user_orders"
+            as: "user_orders"
         }
     },
     {$unwind: "user_orders}
