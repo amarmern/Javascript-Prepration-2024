@@ -1,17 +1,25 @@
-function stringPetterSearch(text, pattern) {
-  let count = 0;
-  for (let i = 0; i < text.length; i++) {
-    for (let j = 0; j < pattern.length; j++) {
-      if (text[i + j] !== pattern[j]) {
-        break;
+const http = require('http');
+
+const user = [{ name: 'test' }, { name: 'test2' }];
+const server = http.createServer((req, res) => {
+  if ((req.path == '/user', req.method == 'GET')) {
+    res.statusCode(200);
+    res.end(JSON.stringify(user));
+  } else if ((req.path == '/user', req.method === 'POST')) {
+    let body = '';
+    res.on('data', (chunk) => {
+      body += chunk.toString();
+    });
+    res.on('end', () => {
+      try {
+        res.statusCode(200);
+        const parseData = JSON.parse(body);
+        res.end(JSON.stringify({ users: parseData }));
+      } catch (error) {
+        res.end('Invalid user');
       }
-      if (pattern.length - 1 === j) {
-        count++;
-      }
-    }
+    });
   }
+});
 
-  return count;
-}
-
-console.log(stringPetterSearch('lollipop', 'lol'));
+server.listen('Server started on PORT 3000');
