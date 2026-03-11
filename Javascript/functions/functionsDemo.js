@@ -65,6 +65,42 @@ let finalAdd = add3(5);
 console.log(finalAdd);
 //or;
 console.log(sum(2)(4));
+///////////////
+function createCounter() {
+  let count = 0;
+
+  return function incrementCnt() {
+    count++;
+    console.log(count);
+  };
+}
+
+const crareCounterA = createCounter();
+crareCounterA();
+crareCounterA();
+
+const crareCounterB = createCounter();
+crareCounterB();
+
+///or
+
+function createCounter() {
+  let count = 0;
+
+  return {
+    incrementCnt() {
+      count++;
+      console.log(count);
+    },
+  };
+}
+
+const crareCounter1 = createCounter();
+crareCounter1.incrementCnt();
+crareCounter1.incrementCnt();
+
+const crareCounter2 = createCounter();
+crareCounter2.incrementCnt();
 
 //practical
 
@@ -226,10 +262,10 @@ for (var i = 0; i < 5; i++) {
   })(i);
 }
 
-  for (var i = 0; i < 5; i++) {
-    ((i) => {
-      setTimeout(() => {
-        console.log(i);
-      }, i * 1000);
-    })(i);
-  }
+for (var i = 0; i < 5; i++) {
+  ((i) => {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  })(i);
+}
