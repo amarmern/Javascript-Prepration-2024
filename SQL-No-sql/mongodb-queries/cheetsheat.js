@@ -1,62 +1,62 @@
-//object ID contains
-1. 4 byte date machin id
-2. 5 byte process ID
-3. 3 byte random values
-... database commands ...
-view all database
-> show dbs
-for create and switch new database
-> use newDatabaseName
-view current database
-> db 
+// //object ID contains
+// 1. 4 byte date machin id
+// 2. 5 byte process ID
+// 3. 3 byte random values
+// ... database commands ...
+// view all database
+// > show dbs
+// for create and switch new database
+// > use newDatabaseName
+// view current database
+//> db 
 
-Delete database
-db.dropDatabase()
+//Delete database
+//db.dropDatabase()
 
-... collections commands...
-To switch other database
-> use databaseName
+//... collections commands...
+//To switch other database
+// > use databaseName
 
-To create the new collection
-> db.createCollection("comments")
+//To create the new collection
+// > db.createCollection("comments")
 
-to show the collections
-> show Collections
+//to show the collections
+// > show Collections
 
-to delete the collection.
-> db.student.drop()
+//to delete the collection.
+// > db.student.drop()
 
-... Rows/ fields commands..
+//... Rows/ fields commands..
 
-To Insert one Row
+//To Insert one Row
 
-> db.comments.insertOne({"name": "Aditi kumari", "lang" : "javascript" ,"member": 2})
+ db.comments.insertOne({"name": "Aditi kumari", "lang" : "javascript" ,"member": 2})
 
-To Insert many documents
+//To Insert many documents
 
 > db.comments.insertMany([{"name": "Aditi kumari", "lang" : "javascript" ,"member": 2},
 {"name": "Shamila Devi", "lang" : "javascript" ,"member": 3},
 {"name": "Shivam kumar", "lang" : "Java" ,"member": 4}])
 
-To Show the collections 
+//To Show the collections 
 > db.comments.find().pretty()
 
-To search in mongo db
+//To search in mongo db
 >db.comments.find({"lang" : "Java"})
 
-Limiting number of rows 
+//Limiting number of rows 
 > db.comments.find().limit(2)
 
-To Sort in ascending order
+//To Sort in ascending order
 db.comments.find().sort({member : 1}) 
 
-To Sort in desending order
+//To Sort in desending order
 db.comments.find().sort({member : -1})
 
-To remove db
+//To remove db
 db.content.drop()
 
-To update the documents.
+//To update the documents.
 
 >db.comments.updateOne({name: 'Shubham'},
 {$set: {'name': 'Harry',
@@ -64,61 +64,62 @@ To update the documents.
     'member_since': 51
 }}, {upsert: true})
 
-Mongodb Rename of field Operator
+//Mongodb Rename of field Operator
 
 db.comments.update({name: 'Rohan'},
 {$rename:{
     member_since: 'member'
 }})
 
-Mongodb Rename db name:
-> db.students.renameCollection("student")
+//Mongodb Rename db name:
+ db.students.renameCollection("student")
 
-Delete Row (deleteOne, deleteMany, findOneAndDelete)
+//Delete Row (deleteOne, deleteMany, findOneAndDelete)
 
 > db.comments.findOneAndDelete({name: 'Aditi kumari'})
 
-Less than/Greater than/ Less than or Eq/Greater than or Eq
+//Less than/Greater than/ Less than or Eq/Greater than or Eq
 
 db.comments.find({price: {$lt: 90}})
 db.comments.find({price: {$lte: 90}})
 db.comments.find({price: {$gt: 90}})
 db.comments.find({price: {$gte: 90}})
 
-Remove a Single Field
+//Remove a Single Field
 { $unset: "<field.nestedfield>" }
 or
 { $unset: [ "<field1.nestedfield>", ...] }
 db.books.aggregate([ { $unset: "copies" } ])
 
--- create capped collection
+//-- create capped collection
 > db.createCollection("test",{capped: true, autoIndexId: true, size: 612334, max: 100})
 
 > db.test.isCapped()
 
--- convert normal collection to capped 
+//-- convert normal collection to capped 
 > db.runCommand({"convertToCapped": "customer", size: 100000})
 
--- clusture autoIndexId
--- To create the clustered.
+//-- clusture autoIndexId
+//-- To create the clustered.
 
 db.createCollection(
    "orders",
    { clusteredIndex: { "key": { _id: 1 }, "unique": true, "name": "orders clustered key" } }
 )
 
--- to insert many records in the clustered documents
+
+//-- to insert many records in the clustered documents
 db.orders.insertMany( [
    { _id: ISODate( "2022-03-18T12:45:20Z" ), "quantity": 50, "totalOrderPrice": 500 },
    { _id: ISODate( "2022-03-18T12:47:00Z" ), "quantity": 5, "totalOrderPrice": 50 },
    { _id: ISODate( "2022-03-18T12:50:00Z" ), "quantity": 1, "totalOrderPrice": 10 }
 ] )
 
--- To find the cluster document 
+//-- To find the cluster document 
 
 db.orders.find( { _id: { $gt: ISODate( "2022-03-18T12:47:00.000Z" ) } } )
 
---- cursor ----
+//-- cursor ----
 [
     {_id: 1, name: 'A', gender: 'M'},
     {_id: 2, name: 'B', gender: 'F'},
@@ -145,14 +146,14 @@ db.orders.find( { _id: { $gt: ISODate( "2022-03-18T12:47:00.000Z" ) } } )
     {_id: 23, name: 'X', gender: 'F'},
     {_id: 24, name: 'Y', gender: 'M'},
     {_id: 25, name: 'Z', gender: 'F'},
-    {_id: 26, name: 'A', gender: 'F'},
+    {_id: 26, name: 'A', gender: 'F'}
 
 ]
-find methods returns onle some batch of document from all document this is called in cursor in Mongodb
+//find methods returns onle some batch of document from all document this is called in cursor in Mongodb
 
-for return more document need pass it 
+//for return more document need pass it 
 
-also toArray() that return all the documents internally
+//also toArray() that return all the documents internally
 
 > db.customer.find().toArray()
 
@@ -237,7 +238,7 @@ also toArray() that return all the documents internally
 >db["car-sample"].find({},{model:1,_id:0})
 
 // update the data form list 
->db.car.updateOne({model:'Nexon'},{$push/pull: {feature}}) 
+//>db.car.updateOne({model:'Nexon'},{$push/$pull: {feature}}) 
 
 //update one
 >db.car.updateOne({fuel_type: "Diesel"},{$set: {alloys: "yes"}})
@@ -249,21 +250,39 @@ also toArray() that return all the documents internally
 db.car.updateOne({model:'Nexon'},
         {$push: {features: {$each: ["Wireless Charging","Voice Control"]}}}
 );
+// Add the new value in the existing array field with condition
+db.car.updateOne({model:'Nexon'},{$push: {features: "Voice Control"}})
+
+//update Multiple values from Array with condition
+db.employees.updateOne({name:"Rahul"}, {$push:{skill:{$each: ['AWS','DB']}}})
+
+//update skill with condition in list from DB to MongoDB in array
+
+// update the data form list
+$push
+
+$addToSet
+
+$pull
+
+$set
+
+$pop
 
 // unset from update means remod=ve the field
-we can use $unset
+//we can use $unset
 
-delete the records
+// deleteOne and deleteMany
 
 db.car.deleteOne({fuel_type:"Petrol"})
 db.car.deleteMany({fuel_type:"Petrol"})
 
-find more than one engine of cc
+//find more than one engine of cc
 db.car.find({"engine.cc":{$in:[1498,2179]}})
 
-Aggregation is a powerful framework for
-Complex operations like filtering, grouping, sorting, reshaping, and
-summarizing data in a flexible way via pipeline. 
+// Aggregation is a powerful framework for
+// Complex operations like filtering, grouping, sorting, reshaping, and
+// summarizing data in a flexible way via pipeline. 
 
 
 MPrashant
@@ -274,7 +293,7 @@ db.collection.aggregate(
 
          {stage1}, 
 
-         {stage2}...
+         {stage2}
 
        ], {option}
 
@@ -291,7 +310,7 @@ db.orders.aggregate([
     }
 ])     
 
-most comnaly stages aggregate
+//most comnaly stages aggregate
 $match
 
 $group
@@ -312,7 +331,7 @@ $count
 
 $skip
 
-No of cars of each brands
+//No of cars of each brands
 
 db.cars.aggregate([ { $group:{ _id: "$maker",  TotalCars: { $sum: 1 } } }] )
 
@@ -343,7 +362,7 @@ db.users.aggregate([
             as: "user_orders"
         }
     },
-    {$unwind: "user_orders}
+    {$unwind: "$user_orders"}
 ])
 
 
@@ -478,6 +497,38 @@ db.orders.aggregate([
     }
   }
 ]);
+
+//To get the total count of documents matching the filter criteria
+db.orders.aggregate([
+  { $match: { status: "Transaction completed" } },
+  { $count: "count" }
+]);
+
+//To get second highest salary employee
+db.employees.find({}).sort({ salary: -1}).skip(1).limit(1)
+// using aggregate
+db.employees.aggregate([
+  { $sort: { salary: -1 } },
+  { $skip: 1 },
+  { $limit: 1 }
+])
+
+// TO get the top 3 highest salary employee
+db.employees.find({}).sort({ salary: -1}).limit(3)
+// using aggregate  
+db.employees.aggregate([
+  { $sort: { salary: -1 } },
+  { $limit: 3 }
+])
+
+// TO get 3rd highest salary employee
+db.employees.find({}).sort({ salary: -1}).skip(2).limit(1)
+// using aggregate
+db.employees.aggregate([
+  { $sort: { salary: -1 } },
+  { $skip: 2 },
+  { $limit: 1 }
+])
 
 
 

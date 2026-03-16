@@ -121,15 +121,19 @@ select * from employee where fname like 'J%';
 ## get all employee whose dept is 2 character long
 select * from employee where dept LIKE '__';
 
+## get all distinct department from employee table
 SELECT DISTINCT dept FROM EMPLOYEE;
 
 ## ORDER BY
 SELECT * FROM employee ORDER BY salary DESC;
 
+## in mongodb
+db.employee.find().sort({salary: -1})
+
 ## LIMIT
 SELECT * FROM employee ORDER BY salary DESC LIMIT 5;
 
-## agregate function (COUNT, SUM, AVG, MAX, MIN)
+## aggregate function (COUNT, SUM, AVG, MAX, MIN)
 
 
 ## for finding the average salary of employee in each department
@@ -142,15 +146,34 @@ SELECT dept, COUNT(*) AS total_employees
 FROM employee
 GROUP BY dept;
 
+## usong mongodb
+db.employee.aggregate([
+    {
+        $group: {
+            _id: "$dept",
+            total_employees: { $sum: 1 }
+        }
+     }
+])
+
 ## how to find the total number of employee 
 
 SELECT COUNT(*) AS total_employees
 FROM employee;
 
+
  ## employee with highest salary
 
 SELECT * FROM employee
 WHERE salary = (SELECT MAX(salary) FROM employee);
+
+## employee with second highest salary
+SELECT * FROM employee
+WHERE salary = (SELECT MAX(salary) FROM employee 
+WHERE salary < (SELECT MAX(salary) FROM employee));
+//or
+select max(salary) from employee
+where salary < (select max(salary) from employee)
 
 ## average salary of employee in each department
 
@@ -172,6 +195,19 @@ select * from employee order by salary desc limit(1)
  // or  
 SELECT MAX(salary) AS highest_salary
 FROM employee;
+## select higest salary from employee table  using mongodb
+db.employee.find().sort({salary: -1}).limit(1)
+
+## select higest salary from employee table with department using mongodb
+db.employee.aggregate([
+  {
+    $group: {
+      _id: "$dept",
+      highest_salary: { $max: "$salary" }
+    }
+  }
+])
+ 
 
 ## case when statement
 SELECT fname, lname, salary,
