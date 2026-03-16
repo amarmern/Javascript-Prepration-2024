@@ -8,7 +8,7 @@
 // for create and switch new database
 // > use newDatabaseName
 // view current database
-//> db 
+//> db
 
 //Delete database
 //db.dropDatabase()
@@ -30,391 +30,359 @@
 
 //To Insert one Row
 
- db.comments.insertOne({"name": "Aditi kumari", "lang" : "javascript" ,"member": 2})
+db.comments.insertOne({ name: 'Aditi kumari', lang: 'javascript', member: 2 }) >
+  //To Insert many documents
 
-//To Insert many documents
-
-> db.comments.insertMany([{"name": "Aditi kumari", "lang" : "javascript" ,"member": 2},
-{"name": "Shamila Devi", "lang" : "javascript" ,"member": 3},
-{"name": "Shivam kumar", "lang" : "Java" ,"member": 4}])
-
-//To Show the collections 
-> db.comments.find().pretty()
-
-//To search in mongo db
->db.comments.find({"lang" : "Java"})
-
-//Limiting number of rows 
-> db.comments.find().limit(2)
+  db.comments.insertMany([
+    { name: 'Aditi kumari', lang: 'javascript', member: 2 },
+    { name: 'Shamila Devi', lang: 'javascript', member: 3 },
+    { name: 'Shivam kumar', lang: 'Java', member: 4 },
+  ]) >
+  //To Show the collections
+  db.comments.find().pretty() >
+  //To search in mongo db
+  db.comments.find({ lang: 'Java' }) >
+  //Limiting number of rows
+  db.comments.find().limit(2);
 
 //To Sort in ascending order
-db.comments.find().sort({member : 1}) 
+db.comments.find().sort({ member: 1 });
 
 //To Sort in desending order
-db.comments.find().sort({member : -1})
+db.comments.find().sort({ member: -1 });
 
 //To remove db
-db.content.drop()
+db.content.drop() >
+  //To update the documents.
 
-//To update the documents.
-
->db.comments.updateOne({name: 'Shubham'},
-{$set: {'name': 'Harry',
-    'lang': 'JavaScript',
-    'member_since': 51
-}}, {upsert: true})
+  db.comments.updateOne(
+    { name: 'Shubham' },
+    { $set: { name: 'Harry', lang: 'JavaScript', member_since: 51 } },
+    { upsert: true },
+  );
 
 //Mongodb Rename of field Operator
 
-db.comments.update({name: 'Rohan'},
-{$rename:{
-    member_since: 'member'
-}})
+db.comments.update(
+  { name: 'Rohan' },
+  {
+    $rename: {
+      member_since: 'member',
+    },
+  },
+);
 
 //Mongodb Rename db name:
- db.students.renameCollection("student")
+db.students.renameCollection('student') >
+  //Delete Row (deleteOne, deleteMany, findOneAndDelete)
 
-//Delete Row (deleteOne, deleteMany, findOneAndDelete)
-
-> db.comments.findOneAndDelete({name: 'Aditi kumari'})
+  db.comments.findOneAndDelete({ name: 'Aditi kumari' });
 
 //Less than/Greater than/ Less than or Eq/Greater than or Eq
 
-db.comments.find({price: {$lt: 90}})
-db.comments.find({price: {$lte: 90}})
-db.comments.find({price: {$gt: 90}})
-db.comments.find({price: {$gte: 90}})
+db.comments.find({ price: { $lt: 90 } });
+db.comments.find({ price: { $lte: 90 } });
+db.comments.find({ price: { $gt: 90 } });
+db.comments.find({ price: { $gte: 90 } });
 
 //Remove a Single Field
-{ $unset: "<field.nestedfield>" }
-or
-{ $unset: [ "<field1.nestedfield>", ...] }
-db.books.aggregate([ { $unset: "copies" } ])
+{
+  $unset: '<field.nestedfield>';
+}
 
-//-- create capped collection
-> db.createCollection("test",{capped: true, autoIndexId: true, size: 612334, max: 100})
-
-> db.test.isCapped()
-
-//-- convert normal collection to capped 
-> db.runCommand({"convertToCapped": "customer", size: 100000})
+db.books.aggregate([{ $unset: 'copies' }]) >
+  //-- create capped collection
+  db.createCollection('test', {
+    capped: true,
+    autoIndexId: true,
+    size: 612334,
+    max: 100,
+  }) >
+  db.test.isCapped() >
+  //-- convert normal collection to capped
+  db.runCommand({ convertToCapped: 'customer', size: 100000 });
 
 //-- clusture autoIndexId
 //-- To create the clustered.
 
-db.createCollection(
-   "orders",
-   { clusteredIndex: { "key": { _id: 1 }, "unique": true, "name": "orders clustered key" } }
-)
-
+db.createCollection('orders', {
+  clusteredIndex: {
+    key: { _id: 1 },
+    unique: true,
+    name: 'orders clustered key',
+  },
+});
 
 //-- to insert many records in the clustered documents
-db.orders.insertMany( [
-   { _id: ISODate( "2022-03-18T12:45:20Z" ), "quantity": 50, "totalOrderPrice": 500 },
-   { _id: ISODate( "2022-03-18T12:47:00Z" ), "quantity": 5, "totalOrderPrice": 50 },
-   { _id: ISODate( "2022-03-18T12:50:00Z" ), "quantity": 1, "totalOrderPrice": 10 }
-] )
+db.orders.insertMany([
+  { _id: ISODate('2022-03-18T12:45:20Z'), quantity: 50, totalOrderPrice: 500 },
+  { _id: ISODate('2022-03-18T12:47:00Z'), quantity: 5, totalOrderPrice: 50 },
+  { _id: ISODate('2022-03-18T12:50:00Z'), quantity: 1, totalOrderPrice: 10 },
+]);
 
-//-- To find the cluster document 
+//-- To find the cluster document
 
-db.orders.find( { _id: { $gt: ISODate( "2022-03-18T12:47:00.000Z" ) } } )
+db.orders.find({ _id: { $gt: ISODate('2022-03-18T12:47:00.000Z') } })[
+  //-- cursor ----
+  ({ _id: 1, name: 'A', gender: 'M' },
+  { _id: 2, name: 'B', gender: 'F' },
+  { _id: 3, name: 'C', gender: 'M' },
+  { _id: 4, name: 'D', gender: 'F' },
+  { _id: 5, name: 'E', gender: 'M' },
+  { _id: 6, name: 'F', gender: 'F' },
+  { _id: 7, name: 'G', gender: 'M' },
+  { _id: 8, name: 'H', gender: 'F' },
+  { _id: 9, name: 'I', gender: 'M' },
+  { _id: 10, name: 'J', gender: 'F' },
+  { _id: 11, name: 'K', gender: 'M' },
+  { _id: 12, name: 'L', gender: 'F' },
+  { _id: 13, name: 'M', gender: 'M' },
+  { _id: 14, name: 'N', gender: 'F' },
+  { _id: 15, name: 'P', gender: 'M' },
+  { _id: 16, name: 'Q', gender: 'F' },
+  { _id: 17, name: 'R', gender: 'M' },
+  { _id: 18, name: 'S', gender: 'F' },
+  { _id: 19, name: 'T', gender: 'M' },
+  { _id: 20, name: 'U', gender: 'M' },
+  { _id: 21, name: 'V', gender: 'F' },
+  { _id: 22, name: 'W', gender: 'M' },
+  { _id: 23, name: 'X', gender: 'F' },
+  { _id: 24, name: 'Y', gender: 'M' },
+  { _id: 25, name: 'Z', gender: 'F' },
+  { _id: 26, name: 'A', gender: 'F' })
+] >
+  //find methods returns onle some batch of document from all document this is called in cursor in Mongodb
 
-//-- cursor ----
-[
-    {_id: 1, name: 'A', gender: 'M'},
-    {_id: 2, name: 'B', gender: 'F'},
-    {_id: 3, name: 'C', gender: 'M'},
-    {_id: 4, name: 'D', gender: 'F'},
-    {_id: 5, name: 'E', gender: 'M'},
-    {_id: 6, name: 'F', gender: 'F'},
-    {_id: 7, name: 'G', gender: 'M'},
-    {_id: 8, name: 'H', gender: 'F'},
-    {_id: 9, name: 'I', gender: 'M'},
-    {_id: 10, name: 'J', gender: 'F'},
-    {_id: 11, name: 'K', gender: 'M'},
-    {_id: 12, name: 'L', gender: 'F'},
-    {_id: 13, name: 'M', gender: 'M'},
-    {_id: 14, name: 'N', gender: 'F'},
-    {_id: 15, name: 'P', gender: 'M'},
-    {_id: 16, name: 'Q', gender: 'F'},
-    {_id: 17, name: 'R', gender: 'M'},
-    {_id: 18, name: 'S', gender: 'F'},
-    {_id: 19, name: 'T', gender: 'M'},
-    {_id: 20, name: 'U', gender: 'M'},
-    {_id: 21, name: 'V', gender: 'F'},
-    {_id: 22, name: 'W', gender: 'M'},
-    {_id: 23, name: 'X', gender: 'F'},
-    {_id: 24, name: 'Y', gender: 'M'},
-    {_id: 25, name: 'Z', gender: 'F'},
-    {_id: 26, name: 'A', gender: 'F'}
+  //for return more document need pass it
 
-]
-//find methods returns onle some batch of document from all document this is called in cursor in Mongodb
+  //also toArray() that return all the documents internally
 
-//for return more document need pass it 
+  db.customer.find().toArray()[
+    ({
+      maker: 'Hyundai',
+      model: 'Creta',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: {
+        type: 'Naturally Aspirated',
+        cc: 1493,
+        torque: '250 Nm',
+      },
+      features: [
+        'Sunroof',
+        'Leather Seats',
+        'Wireless Charging',
+        'Ventilated Seats',
+        'Bluetooth',
+      ],
+      sunroof: true,
+      airbags: 6,
+    },
+    {
+      maker: 'Maruti Suzuki',
+      model: 'Baleno',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: {
+        type: 'Naturally Aspirated',
+        cc: 1197,
+        torque: '113 Nm',
+      },
+      features: ['Projector Headlamps', 'Apple CarPlay', 'ABS'],
+      sunroof: false,
+      airbags: 2,
+    },
+    {
+      maker: 'Mahindra',
+      model: 'XUV500',
+      fuel_type: 'Diesel',
+      transmission: 'Manual',
+      engine: {
+        type: 'Turbocharged',
+        cc: 2179,
+        torque: '360 Nm',
+      },
+      features: ['All-Wheel Drive', 'Navigation System', 'Cruise Control'],
+      sunroof: true,
+      airbags: 6,
+    },
+    {
+      maker: 'Honda',
+      model: 'City',
+      fuel_type: 'Petrol',
+      transmission: 'Automatic',
+      engine: {
+        type: 'Naturally Aspirated',
+        cc: 1498,
+        torque: '145 Nm',
+      },
+      features: ['Keyless Entry', 'Auto AC', 'Multi-angle Rearview Camera'],
+      sunroof: false,
+      airbags: 4,
+    })
+  ] >
+  db['car-sample'].find({}, { model: 1, _id: 0 }) >
+  // update the data form list
+  //>db.car.updateOne({model:'Nexon'},{$push/$pull: {feature}})
 
-//also toArray() that return all the documents internally
-
-> db.customer.find().toArray()
-
-[
- {
- "maker": "Hyundai",
- "model": "Creta",
- "fuel_type": "Diesel",
- "transmission": "Manual",
- "engine": {
- "type": "Naturally Aspirated",
- "cc": 1493,
- "torque": "250 Nm"
- },
- "features": [
- "Sunroof",
- "Leather Seats",
- "Wireless Charging",
-"Ventilated Seats",
-"Bluetooth"
- ],
- "sunroof": true,
- "airbags": 6
- },
- {
- "maker": "Maruti Suzuki",
- "model": "Baleno",
- "fuel_type": "Petrol",
- "transmission": "Automatic",
- "engine": {
- "type": "Naturally Aspirated",
- "cc": 1197,
- "torque": "113 Nm"
- },
- "features": [
- "Projector Headlamps",
- "Apple CarPlay",
- "ABS"
- ],
- "sunroof": false,
- "airbags": 2
- },
- {
- "maker": "Mahindra",
- "model": "XUV500",
- "fuel_type": "Diesel",
- "transmission": "Manual",
- "engine": {
- "type": "Turbocharged",
- "cc": 2179,
- "torque": "360 Nm"
- },
- "features": [
- "All-Wheel Drive",
- "Navigation System",
- "Cruise Control"
- ],
- "sunroof": true,
- "airbags": 6
- },
- {
- "maker": "Honda",
- "model": "City",
- "fuel_type": "Petrol",
- "transmission": "Automatic",
- "engine": {
- "type": "Naturally Aspirated",
- "cc": 1498,
- "torque": "145 Nm"
- },
- "features": [
- "Keyless Entry",
- "Auto AC",
- "Multi-angle Rearview Camera"
- ],
- "sunroof": false,
- "airbags": 4
- }
-]
-
-
->db["car-sample"].find({},{model:1,_id:0})
-
-// update the data form list 
-//>db.car.updateOne({model:'Nexon'},{$push/$pull: {feature}}) 
-
-//update one
->db.car.updateOne({fuel_type: "Diesel"},{$set: {alloys: "yes"}})
-//update many
->db.car.updateMany({fuel_type: "Diesel"},{$set: {alloys: "yes"}})
+  //update one
+  db.car.updateOne({ fuel_type: 'Diesel' }, { $set: { alloys: 'yes' } }) >
+  //update many
+  db.car.updateMany({ fuel_type: 'Diesel' }, { $set: { alloys: 'yes' } });
 
 //update Multiple values from Array
 
-db.car.updateOne({model:'Nexon'},
-        {$push: {features: {$each: ["Wireless Charging","Voice Control"]}}}
+db.car.updateOne(
+  { model: 'Nexon' },
+  { $push: { features: { $each: ['Wireless Charging', 'Voice Control'] } } },
 );
 // Add the new value in the existing array field with condition
-db.car.updateOne({model:'Nexon'},{$push: {features: "Voice Control"}})
+db.car.updateOne({ model: 'Nexon' }, { $push: { features: 'Voice Control' } });
 
 //update Multiple values from Array with condition
-db.employees.updateOne({name:"Rahul"}, {$push:{skill:{$each: ['AWS','DB']}}})
+db.employees.updateOne(
+  { name: 'Rahul' },
+  { $push: { skill: { $each: ['AWS', 'DB'] } } },
+);
 
 //update skill with condition in list from DB to MongoDB in array
 
 // update the data form list
-$push
+$push;
 
-$addToSet
+$addToSet;
 
-$pull
+$pull;
 
-$set
+$set;
 
-$pop
+$pop;
 
 // unset from update means remod=ve the field
 //we can use $unset
 
 // deleteOne and deleteMany
 
-db.car.deleteOne({fuel_type:"Petrol"})
-db.car.deleteMany({fuel_type:"Petrol"})
+db.car.deleteOne({ fuel_type: 'Petrol' });
+db.car.deleteMany({ fuel_type: 'Petrol' });
 
 //find more than one engine of cc
-db.car.find({"engine.cc":{$in:[1498,2179]}})
+db.car.find({ 'engine.cc': { $in: [1498, 2179] } });
 
 // Aggregation is a powerful framework for
 // Complex operations like filtering, grouping, sorting, reshaping, and
-// summarizing data in a flexible way via pipeline. 
+// summarizing data in a flexible way via pipeline.
 
+MPrashant;
 
-MPrashant
-
-db.collection.aggregate(
-
-       [
-
-         {stage1}, 
-
-         {stage2}
-
-       ], {option}
-
-     )
+db.collection.aggregate([{ stage1 }, { stage2 }], { option });
 
 db.orders.aggregate([
-    //stage 1: filtere pizza order document by pizza size
-    {
-        $match: { size: 'meduim'}
-    },
-    // stage2
-    {
-        $group: { _id: "$name", totalQuantity: { $sum: "$quantity"}}
-    }
-])     
+  //stage 1: filtere pizza order document by pizza size
+  {
+    $match: { size: 'meduim' },
+  },
+  // stage2
+  {
+    $group: { _id: '$name', totalQuantity: { $sum: '$quantity' } },
+  },
+]);
 
 //most comnaly stages aggregate
-$match
+$match;
 
-$group
+$group;
 
-$project
+$project;
 
-$sort
+$sort;
 
-$limit
+$limit;
 
-$unwind
+$unwind;
 
-$lookup
+$lookup;
 
-$addFields
+$addFields;
 
-$count
+$count;
 
-$skip
+$skip;
 
 //No of cars of each brands
 
-db.cars.aggregate([ { $group:{ _id: "$maker",  TotalCars: { $sum: 1 } } }] )
-
-
->db.cars.aggregate([{$match:{maker:"Hyundai","engine.cc":{$gt:1000}}}])
->db.teachers.aggregate([{$match: {gender: "male"}}])
+db.cars.aggregate([{ $group: { _id: '$maker', TotalCars: { $sum: 1 } } }]) >
+  db.cars.aggregate([
+    { $match: { maker: 'Hyundai', 'engine.cc': { $gt: 1000 } } },
+  ]) >
+  db.teachers.aggregate([{ $match: { gender: 'male' } }]);
 
 db.users.aggregate([
-    {
-        $lookup:{
-            from : 'orders',
-            localField: '_id',
-            foreign_field: "user_id",
-            as: "user_order"
-        }
-    }
-])
+  {
+    $lookup: {
+      from: 'orders',
+      localField: '_id',
+      foreign_field: 'user_id',
+      as: 'user_order',
+    },
+  },
+]);
 
 // it will give the result in Array of array element to solve this we can use
 
-
 db.users.aggregate([
-    {
-        $lookup:{
-            from : 'orders',
-            localField: '_id',
-            foreign_field: "user_id",
-            as: "user_orders"
-        }
+  {
+    $lookup: {
+      from: 'orders',
+      localField: '_id',
+      foreign_field: 'user_id',
+      as: 'user_orders',
     },
-    {$unwind: "$user_orders"}
-])
-
-
+  },
+  { $unwind: '$user_orders' },
+]);
 
 db.orders.insertMany([
-  { user: "Amit", product: "Mobile", amount: 20000, status: "completed" },
-  { user: "Amit", product: "Laptop", amount: 60000, status: "completed" },
-  { user: "Rahul", product: "Mobile", amount: 18000, status: "pending" },
-  { user: "Rahul", product: "TV", amount: 40000, status: "completed" },
-  { user: "Neha", product: "Mobile", amount: 22000, status: "completed" }
+  { user: 'Amit', product: 'Mobile', amount: 20000, status: 'completed' },
+  { user: 'Amit', product: 'Laptop', amount: 60000, status: 'completed' },
+  { user: 'Rahul', product: 'Mobile', amount: 18000, status: 'pending' },
+  { user: 'Rahul', product: 'TV', amount: 40000, status: 'completed' },
+  { user: 'Neha', product: 'Mobile', amount: 22000, status: 'completed' },
 ]);
 
-
-db.orders.aggregate([
-  { $match: { status: "completed" } }
-]);
+db.orders.aggregate([{ $match: { status: 'completed' } }]);
 
 db.orders.aggregate([
   {
     $project: {
-      customer: "$user",
-      totalAmount: "$amount",
-      _id: 0
-    }
-  }
+      customer: '$user',
+      totalAmount: '$amount',
+      _id: 0,
+    },
+  },
 ]);
 
 db.orders.aggregate([
   {
     $group: {
-      _id: "$user",
-      totalSpent: { $sum: "$amount" }
-    }
+      _id: '$user',
+      totalSpent: { $sum: '$amount' },
+    },
   },
-  { $sort: { totalSpent: -1 } }
+  { $sort: { totalSpent: -1 } },
 ]);
 
 //top 2 users
-db.orders.aggregate([
-  { $sort: { amount: -1 } },
-  { $limit: 2 }
-]);
-
+db.orders.aggregate([{ $sort: { amount: -1 } }, { $limit: 2 }]);
 
 db.users.insertMany([
-  { _id: 1, name: "Amit" },
-  { _id: 2, name: "Rahul" }
+  { _id: 1, name: 'Amit' },
+  { _id: 2, name: 'Rahul' },
 ]);
 
 db.orders.insertMany([
-  { userId: 1, product: "Mobile", amount: 20000 },
-  { userId: 2, product: "TV", amount: 40000 }
+  { userId: 1, product: 'Mobile', amount: 20000 },
+  { userId: 2, product: 'TV', amount: 40000 },
 ]);
 
 //Join users with orders
@@ -422,55 +390,54 @@ db.orders.insertMany([
 db.orders.aggregate([
   {
     $lookup: {
-      from: "users",
-      localField: "userId",
-      foreignField: "_id",
-      as: "userDetails"
-    }
-  }
+      from: 'users',
+      localField: 'userId',
+      foreignField: '_id',
+      as: 'userDetails',
+    },
+  },
 ]);
 
 db.orders.aggregate([
   {
     $lookup: {
-      from: "users",
-      localField: "userId",
-      foreignField: "_id",
-      as: "userDetails"
-    }
+      from: 'users',
+      localField: 'userId',
+      foreignField: '_id',
+      as: 'userDetails',
+    },
   },
-  {$unwind: "$userDetails"}
+  { $unwind: '$userDetails' },
 ]);
 //$unwind – Flatten Array
 db.orders.aggregate([
-  { $match: { status: "completed" } },
+  { $match: { status: 'completed' } },
   {
     $group: {
-      _id: "$user",
-      totalAmount: { $sum: "$amount" }
-    }
+      _id: '$user',
+      totalAmount: { $sum: '$amount' },
+    },
   },
-  { $sort: { totalAmount: -1 } }
+  { $sort: { totalAmount: -1 } },
 ]);
 //Categorize orders as High / Medium / Low value
 db.orders.aggregate([
-  { $match: { status: "completed" } },
+  { $match: { status: 'completed' } },
   {
     $group: {
-      _id: "$user",
-      totalAmount: { $sum: "$amount" }
-    }
+      _id: '$user',
+      totalAmount: { $sum: '$amount' },
+    },
   },
-  { $sort: { totalAmount: -1 } }
+  { $sort: { totalAmount: -1 } },
 ]);
 
 //Basic Pagination using $skip & $limit
 //skip = (pageNumber - 1) * pageSize
 
-
 //Backend API Style Response (Node.js)
 
-const result = await db.collection("orders").aggregate(pipeline).toArray();
+const result = await db.collection('orders').aggregate(pipeline).toArray();
 
 const total = result[0].totalCount[0]?.count || 0;
 
@@ -479,13 +446,13 @@ return {
   page,
   limit,
   totalPages: Math.ceil(total / limit),
-  totalRecords: total
+  totalRecords: total,
 };
 
 //Pagination with Filters + Sorting (Real API)
 
 db.orders.aggregate([
-  { $match: { status: "Transaction completed" } },
+  { $match: { status: 'Transaction completed' } },
   { $sort: { createdAt: -1 } },
   { $skip: (page - 1) * limit },
   { $limit: limit },
@@ -493,56 +460,36 @@ db.orders.aggregate([
     $project: {
       user: 1,
       amount: 1,
-      createdAt: 1
-    }
-  }
+      createdAt: 1,
+    },
+  },
 ]);
 
 //To get the total count of documents matching the filter criteria
 db.orders.aggregate([
-  { $match: { status: "Transaction completed" } },
-  { $count: "count" }
+  { $match: { status: 'Transaction completed' } },
+  { $count: 'count' },
 ]);
 
 //To get second highest salary employee
-db.employees.find({}).sort({ salary: -1}).skip(1).limit(1)
+db.employees.find({}).sort({ salary: -1 }).skip(1).limit(1);
 // using aggregate
 db.employees.aggregate([
   { $sort: { salary: -1 } },
   { $skip: 1 },
-  { $limit: 1 }
-])
+  { $limit: 1 },
+]);
 
 // TO get the top 3 highest salary employee
-db.employees.find({}).sort({ salary: -1}).limit(3)
-// using aggregate  
-db.employees.aggregate([
-  { $sort: { salary: -1 } },
-  { $limit: 3 }
-])
+db.employees.find({}).sort({ salary: -1 }).limit(3);
+// using aggregate
+db.employees.aggregate([{ $sort: { salary: -1 } }, { $limit: 3 }]);
 
 // TO get 3rd highest salary employee
-db.employees.find({}).sort({ salary: -1}).skip(2).limit(1)
+db.employees.find({}).sort({ salary: -1 }).skip(2).limit(1);
 // using aggregate
 db.employees.aggregate([
   { $sort: { salary: -1 } },
   { $skip: 2 },
-  { $limit: 1 }
-])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  { $limit: 1 },
+]);
