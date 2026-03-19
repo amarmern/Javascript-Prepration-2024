@@ -1,6 +1,7 @@
 function isValid(s) {
   const stack = [];
   const bracketMap = { ')': '(', '}': '{', ']': '[' };
+
   for (let char of s) {
     if (char === '(' || char === '{' || char === '[') {
       stack.push(char);

@@ -6,21 +6,20 @@ let users = [
 const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
 
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS',
-  );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // res.setHeader(
+  //   'Access-Control-Allow-Methods',
+  //   'GET, POST, PUT, DELETE, OPTIONS',
+  // );
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   let body = '';
   if (req.method == 'GET' && req.url == '/api/users') {
     res.status = 200;
     res.end(JSON.stringify(users));
   } else if (req.method === 'POST' && req.url === '/api/user') {
-    let body = '';
     req.on('data', (chunk) => {
       body += chunk.toString(); // accumlate the data
     });

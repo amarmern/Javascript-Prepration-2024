@@ -23,9 +23,9 @@ function countVC(str) {
   let v = 0,
     c = 0;
   let vowels = 'aeiouAEIOU';
-  for (let ch of str) {
-    if (/[a-z]/i.test(ch)) {
-      vowels.includes(ch) ? v++ : c++;
+  for (let char of str) {
+    if (/[a-z]/i.test(char)) {
+      vowels.includes(char) ? v++ : c++;
     }
   }
   return { vowels: v, consonants: c };

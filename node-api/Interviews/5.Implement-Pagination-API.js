@@ -1,0 +1,15 @@
+app.get(async (req, res) => {
+  let page = req.params.page || 1;
+  let limit = req.params.limit || 10;
+
+  let skip = (page - 1) * limit;
+
+  const users = awaitUser.find().skip(skip).limit(limit);
+  const total = users.length;
+  res.status(200).send.json({
+    messagee: {
+      totalPage: Math.ceil(total / limit),
+      data: users,
+    },
+  });
+});
