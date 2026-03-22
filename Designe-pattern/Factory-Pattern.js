@@ -1,6 +1,7 @@
 /* 
-The Factory Pattern provides a method for creating objects without specifying the exact class of object 
-that will be created. This pattern helps in managing the creation logic of objects.
+The Factory Pattern provides a method for creating objects without specifying 
+the exact class of object that will be created. 
+This pattern helps in managing the creation logic of objects.
 
 */
 function Dog(name) {
