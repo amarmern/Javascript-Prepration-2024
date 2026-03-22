@@ -1,89 +1,76 @@
-type TPromiseResolve<T> = (value: T) => void;
-type TPromiseReject<T> = (reason: T) => void;
+// type UserProfile = {
+//   name: string;
+//   age: number;
+//   address?: string;
+// };
 
-type TPromiseExecutor<T, K> = (
-  resolve: TPromiseResolve<T>,
-  reject: TPromiseReject<K>,
-) => void;
+// const userProf: UserProfile = {
+//   name: 'Amrendra',
+//   age: 32,
+// };
 
-type TPromiseThenCallback<T> = (value: T | undefined) => void;
-type TPromiseCatchCallback<T> = (reason: T | undefined) => void;
-type TPromiseFinallyCallback = () => void;
+// function loging(useData: UserProfile): UserProfile {
+//   return useData;
+// }
+// console.log(loging(userProf));
 
-enum PromiseState {
-  PENDING = 'pending',
-  FULFILLED = 'fulfilled',
-  REJECETD = 'rejected',
-}
+//...............................................................
 
-class MyPromise<T, K> {
-  private _state: PromiseState = PromiseState.PENDING;
+//Interface.....................
 
-  private _successCallbackHandlers: TPromiseThenCallback<T>[] = [];
-  private _failureCallbackHandlers: TPromiseCatchCallback<K>[] = [];
-  private _finallyCallbackHandler: TPromiseFinallyCallback | undefined =
-    undefined;
+// interface Transaction {
+//   payerAccountNumber: number;
+//   payeeAccountNumber: number;
+// }
 
-  private _value: T | undefined = undefined;
-  private _reason: K | undefined = undefined;
+// interface BankAccount {
+//   accountNumber: number;
+//   accountHolder: string;
+//   balance: number;
+//   isActive: boolean;
+//   transactions: Transaction[];
+// }
 
-  constructor(executor: TPromiseExecutor<T, K>) {
-    executor(
-      this._promiseResolver.bind(this),
-      this._promiseRejector.bind(this),
-    );
-  }
+// const transaction1: Transaction = {
+//   payerAccountNumber: 123,
+//   payeeAccountNumber: 456,
+// };
+// const transaction2: Transaction = {
+//   payerAccountNumber: 123,
+//   payeeAccountNumber: 456,
+// };
 
-  public then(handlerFn: TPromiseThenCallback<T>) {
-    if (this._state === PromiseState.FULFILLED) {
-      handlerFn(this._value);
-    } else {
-      this._successCallbackHandlers.push(handlerFn);
-    }
-    return this;
-  }
+// const bankAccount: BankAccount = {
+//   accountNumber: 6567,
+//   accountHolder: 'xyx',
+//   balance: 1000,
+//   isActive: true,
+//   transactions: [transaction1, transaction2],
+// };
+// Merging (when two interface are same).............................................
+// interface Boook {
+//   name: string;
+//   price: number;
+// }
 
-  public catch(handlerFn: TPromiseCatchCallback<K>) {
-    if (this._state === PromiseState.REJECETD) {
-      handlerFn(this._reason);
-    } else {
-      this._failureCallbackHandlers.push(handlerFn);
-    }
-    return this;
-  }
+// interface Boook {
+//   size: number;
+// }
 
-  public finally(handlerFn: TPromiseFinallyCallback) {
-    if (this._state !== PromiseState.PENDING) return handlerFn();
-    this._finallyCallbackHandler = handlerFn;
-  }
+// const book: Boook = {
+//   name: 'Automatic book',
+//   price: 1000,
+//   size: 2000,
+// };
 
-  private _promiseResolver(value: T) {
-    if (this._state === PromiseState.FULFILLED) return;
-    this._state = PromiseState.FULFILLED;
-    this._value = value;
-    this._successCallbackHandlers.forEach((cb) => cb(value));
-    if (this._finallyCallbackHandler) this._finallyCallbackHandler();
-  }
+// Note duplicate type is not allow but interface can be duplicate
 
-  private _promiseRejector(reason: K) {
-    if (this._state === PromiseState.REJECETD) return;
-    this._state = PromiseState.REJECETD;
-    this._reason = reason;
-    this._failureCallbackHandlers.forEach((cb) => cb(reason));
-    if (this._finallyCallbackHandler) this._finallyCallbackHandler();
-  }
-}
+//Generic type
 
-function customPromise() {
-  return new MyPromise((resolve, reject) => {
-    resolve(1);
-  });
-}
+// prevent DRY
+// function logAnyThing<T>(arg: T) {
+//   console.log(arg);
+//   return arg;
+// }
 
-const p1 = customPromise()
-  .then((value) => {
-    console.log(`Promise Resolve`, value);
-  })
-  .catch((reason) => {
-    console.log('Rejected', reason);
-  });
+// logAnyThing([4, 5]);

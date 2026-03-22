@@ -4,7 +4,7 @@ app.get(async (req, res) => {
 
   let skip = (page - 1) * limit;
 
-  const users = awaitUser.find().skip(skip).limit(limit);
+  const users = await User.find().skip(skip).limit(limit);
   const total = users.length;
   res.status(200).send.json({
     messagee: {

@@ -1,6 +1,8 @@
 //1. Module / Revealing Module
 /*
-// In the traditional module pattern, you define public functions and properties directly within the returned object literal, referencing private functions as needed.
+// In the traditional module pattern, you define public functions and
+//  properties directly within the returned object literal,
+//  referencing private functions as needed.
 
 var traditionalModule = (function () {
   var privateVariable = 'I am private';
@@ -19,7 +21,11 @@ var traditionalModule = (function () {
   };
 })();
 
-//The revealing module pattern defines all functions and variables internally as private members. The final return statement then maps the desired private members to public names, essentially "revealing" them to the outside world.
+//The revealing module pattern defines all functions and variables
+//  internally as private members. The final return statement then maps
+//  the desired private members to public names, essentially "revealing" 
+// them to the outside world.
+
 var revealingModule = (function () {
   var privateVariable = "I am private";
 
@@ -44,9 +50,16 @@ var revealingModule = (function () {
 */
 
 //2.Singleton one shared instance (e.g., DB connection, config).
-//The Singleton design pattern ensures a class has only one instance and provides a global point of access to it. It is useful for managing shared resources like configuration settings, database connections, or logging services.
+//The Singleton design pattern ensures a class has only one instance and
+//  provides a global point of access to it. It is useful for managing
+// shared resources like configuration settings, database connections,
+// or logging services.
 
-//Proxy Pattern: -> Generally speaking, a proxy means a stand-in for someone else. Instead of speaking to that person directly, you’ll speak to the proxy person who will represent the person you were trying to reach. The same happens in JavaScript: instead of interacting with the target object directly, we’ll interact with the Proxy object.
+//Proxy Pattern: -> Generally speaking, a proxy means a stand-in for
+//  someone else. Instead of speaking to that person directly,
+// you’ll speak to the proxy person who will represent the person you were
+// trying to reach. The same happens in JavaScript: instead of interacting
+// with the target object directly, we’ll interact with the Proxy object.
 
 // const Person = {
 //   name: 'Amrendra',

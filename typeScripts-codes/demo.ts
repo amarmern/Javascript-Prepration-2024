@@ -68,3 +68,5 @@ interface User {
 
 type PartialUser = Partial<User>;
 type UserName = Pick<User, 'name'>;
+
+///..............................................................

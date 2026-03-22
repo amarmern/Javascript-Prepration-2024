@@ -1,4 +1,5 @@
-/*The Module Pattern is used to encapsulate private variables and functions, exposing a public API.
+/*The Module Pattern is used to encapsulate private variables and functions,
+ exposing a public API.
  This pattern promotes data privacy and prevents global scope pollution. */
 const Module = (function () {
   let privateVariable = 'I am private';

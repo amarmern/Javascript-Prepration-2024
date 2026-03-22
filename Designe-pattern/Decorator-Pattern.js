@@ -1,6 +1,9 @@
 /*
-The Decorator Pattern allows you to add new functionality to an existing object without altering its structure. This is particularly useful when you want to extend the capabilities of objects dynamically.
-In JavaScript, you can implement the Decorator Pattern using functions or classes. 
+The Decorator Pattern allows you to add new functionality to an existing 
+object without altering its structure. This is particularly useful when you
+ want to extend the capabilities of objects dynamically.
+In JavaScript, you can implement the Decorator Pattern using functions or 
+classes. 
 Below is an example of how to use the Decorator Pattern with classes.
 */
 function Coffee() {

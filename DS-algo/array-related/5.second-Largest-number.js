@@ -24,9 +24,9 @@ console.log(secondLargestNumber(array));
 
 ///
 
-console.log(thirdLargest([3, 10, 7, 5, 12, 11, 25, 2]));
+console.log(secondLargest([3, 10, 7, 5, 12, 11, 25, 2]));
 
-function thirdLargest(arr) {
+function secondLargest(arr) {
   let first = 0,
     second = 0;
 
