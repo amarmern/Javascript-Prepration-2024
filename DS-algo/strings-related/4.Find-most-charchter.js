@@ -1,6 +1,5 @@
-//(1.) Longest Substring Without Repeating Characters
 let str = 'abcabcbb';
-//Output: 3  // "abc"
+//b -> 4
 
 let charMap = {};
 let max = 0;

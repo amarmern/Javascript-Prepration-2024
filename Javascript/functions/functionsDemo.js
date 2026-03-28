@@ -33,27 +33,6 @@ console.log(f); ////Identifier 'f' has already been declared
 
 //lexical environment
 
-function init() {
-  let name = 'mozila';
-  function displayName() {
-    console.log(name);
-  }
-  displayName();
-}
-
-init();
-
-function myFUnc() {
-  let name = 'Mozzila';
-  function displayName() {
-    console.log(name);
-  }
-  return displayName;
-}
-
-let func = myFUnc();
-func();
-
 function sum(a) {
   return function (b) {
     return a + b;
@@ -175,6 +154,17 @@ function add(a, b, cb) {
 add(3, 4, (val) => {
   console.log(val);
 });
+
+//A JavaScript callback is a function passed as an argument to another function,
+// which is then executed (or "called back") at a later point in time to complete a
+// specific task.
+
+//This mechanism is fundamental to JavaScript's event-driven and asynchronous programming model.
+setTimeout(myFunction, 3000);
+
+function myFunction() {
+  console.log('I love You !!');
+}
 
 function sum(a) {
   if (arguments.length > 1) {
