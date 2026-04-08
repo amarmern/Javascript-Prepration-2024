@@ -15,7 +15,7 @@ let nums = [1, 3, 4, 2, 2];
 var containsDuplicate = function (nums) {
   let duplicate = [];
   for (let i = 0; i < nums.length; i++) {
-    if (nums.indexOf(nums[i]) !== i) {
+    if (nums.indexOf(nums[i]) !== i && duplicate.indexOf(nums[i]) == -1) {
       duplicate.push(nums[i]);
     }
   }

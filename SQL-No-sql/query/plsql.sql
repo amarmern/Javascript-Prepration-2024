@@ -72,9 +72,9 @@ INSERT INTO employee (fname, lname, email, dept, salary) VALUES
 ('Jessica', 'Thomas', 'jessica.thomas@example.com', 'HR', 42000.00);
 
 # for finding duplicate fname in employee table
-select fname, count(*)
+select emp_id, count(*)
 from employee
-group by fname
+group by emp_id
 having count(*) >1
 
 ## delete duplicate data

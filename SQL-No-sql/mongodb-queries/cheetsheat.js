@@ -220,13 +220,15 @@ db.orders.find({ _id: { $gt: ISODate('2022-03-18T12:47:00.000Z') } })[
       sunroof: false,
       airbags: 4,
     })
-  ] >
-  db['car-sample'].find({}, { model: 1, _id: 0 }) >
-  // update the data form list
-  //>db.car.updateOne({model:'Nexon'},{$push/$pull: {feature}})
+  ];
 
-  //update one
-  db.car.updateOne({ fuel_type: 'Diesel' }, { $set: { alloys: 'yes' } }) >
+// populate only model of cars don;t populate the id
+db['car-sample'].find({}, { model: 1, _id: 0 });
+// update the data form list
+//>db.car.updateOne({model:'Nexon'},{$push/$pull: {feature}})
+
+//update one
+db.car.updateOne({ fuel_type: 'Diesel' }, { $set: { alloys: 'yes' } }) >
   //update many
   db.car.updateMany({ fuel_type: 'Diesel' }, { $set: { alloys: 'yes' } });
 

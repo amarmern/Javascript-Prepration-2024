@@ -1,31 +1,37 @@
-const express = require('express');
+const rateLimitStore = {};
+const WINDOW_SIZE = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 5;
 
-const app = express();
-const rateLimitMap = new Map();
+const rateLimiter = (req, res, next) => {
+  const ip = req.ip;
+  const currentTime = Date.now();
 
-function rateLimiter(limit, windowMs) {
-  return (req, res, next) => {
-    const ip = req.ip;
-    const currentTime = Date.now();
+  if (!rateLimitStore[ip]) {
+    rateLimitStore[ip] = {
+      count: 1,
+      startTime: currentTime,
+    };
+  } else {
+    const timeDiff = currentTime - rateLimitStore[ip].startTime;
 
-    if (!rateLimitMap.has(ip)) {
-      rateLimitMap.set(ip, []);
+    if (timeDiff > WINDOW_SIZE) {
+      // Reset after window
+      rateLimitStore[ip] = {
+        count: 1,
+        startTime: currentTime,
+      };
+    } else {
+      rateLimitStore[ip].count += 1;
     }
+  }
 
-    const timestamps = rateLimitMap
-      .get(ip)
-      .filter((ts) => currentTime - ts < windowMs);
+  if (rateLimitStore[ip].count > MAX_REQUESTS) {
+    return res.status(429).json({
+      message: 'Too many requests. Try again later.',
+    });
+  }
 
-    timestamps.push(currentTime);
-    rateLimitMap.set(ip, timestamps);
+  next();
+};
 
-    if (timestamps.length > limit) {
-      return res.status(429).json({ message: 'Too many requests' });
-    }
-
-    next();
-  };
-}
-
-// usage
-app.use(rateLimiter(100, 60 * 1000));
+module.exports = rateLimiter;

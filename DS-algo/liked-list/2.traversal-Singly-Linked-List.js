@@ -5,7 +5,6 @@ class Node {
     this.next = null;
   }
 }
-
 function traverseList(head) {
   if (!head) {
     return;
@@ -14,17 +13,13 @@ function traverseList(head) {
   if (head.next) {
     process.stdout.write(' -> ');
   }
-
   traverseList(head.next);
 }
-
 let head = new Node(10);
 head.next = new Node(20);
 head.next.next = new Node(30);
 head.next.next.next = new Node(40);
-
 traverseList(head);
-
 // a linked list node
 class Node {
   // constructor to initialize a new node with data
@@ -33,7 +28,6 @@ class Node {
     this.next = null;
   }
 }
-
 // function to traverse and print the singly linked list
 function traverseList(head) {
   while (head !== null) {
@@ -45,14 +39,11 @@ function traverseList(head) {
   }
   console.log();
 }
-
 // Driver code
-
 // create a hard-coded linked list:
 // 10 -> 20 -> 30 -> 40
 let head = new Node(10);
 head.next = new Node(20);
 head.next.next = new Node(30);
 head.next.next.next = new Node(40);
-
 traverseList(head);

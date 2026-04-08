@@ -55,17 +55,17 @@ function twoSum(nums, target) {
   }
 }
 
-function twoSum(arr, target) {
+console.log(twoSum([2, 3, 1, 1, -1, 3, 4], 7));
+//..............................
+function twoSum(arr, sum) {
   let map = {};
   for (let i = 0; i < arr.length; i++) {
     let firstEle = arr[i];
-    let secondEle = target - firstEle;
-    if (map[secondEle]) {
-      return [map[secondEle], i];
+    let secondEle = sum - firstEle;
+    if (map[secondEle] != undefined) {
+      return [firstEle, map[secondEle]];
     } else {
-      map[firstEle] = i;
+      map[firstEle] = firstEle;
     }
   }
 }
-
-console.log(twoSum([2, 3, 1, 1, -1, 3, 4], 7));

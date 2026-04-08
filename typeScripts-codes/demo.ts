@@ -70,3 +70,24 @@ type PartialUser = Partial<User>;
 type UserName = Pick<User, 'name'>;
 
 ///..............................................................
+
+//primitive
+type name = string;
+
+export type Course = {
+  title: string;
+  urls: string;
+  chapters: string;
+};
+
+interface Books {
+  title: string;
+  urls: string;
+  books: string;
+}
+
+// union
+type LearningResource = Course | Books;
+
+//tuple
+type CourseLeraners = [Course, Books];
