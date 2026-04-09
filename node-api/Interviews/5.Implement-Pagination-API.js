@@ -6,9 +6,10 @@ app.get(async (req, res) => {
 
   const users = await User.find().skip(skip).limit(limit);
   const total = users.length;
+  const totalPage = Math.ceil(total / limit);
   res.status(200).send.json({
     messagee: {
-      totalPage: Math.ceil(total / limit),
+      totalPage: totalPage,
       data: users,
     },
   });
