@@ -23,6 +23,25 @@ function maxProfit(prices) {
 
 console.log(maxProfit(stockPrices)); // Output: 6
 
+function lowestAndHighest(prices) {
+  let min = prices[0];
+  let max = prices[0];
+
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
+      max = prices[i]; // reset max after new min
+    } else if (prices[i] > max) {
+      max = prices[i];
+    }
+  }
+
+  return { min, max };
+}
+
+console.log(lowestAndHighest([4, 2, 5, 1, 7, 0]));
+// { min: 1, max: 7 }
+
 // but lowest should be before highest
 function maxProfitDetails(price) {
   let minPrice = price[0];

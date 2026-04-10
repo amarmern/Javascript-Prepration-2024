@@ -1,15 +1,24 @@
-const { tokenToString } = require('typescript');
+function lengthOfLongestSubstring(str) {
+  let visited = {};
+  let left = 0;
+  let maxLength = 0;
 
-app.get((req, res) => {
-  const page = req.params.page || 1;
-  const limit = req.params.skip || 10;
+  for (let right = 0; right < str.length; right++) {
+    let ch = str[right];
 
-  const skip = (page - 1) * limit;
+    if (visited[ch] !== undefined && visited[ch] >= left) {
+      left = visited[ch] + 1; //  left will shifted by 1 position
+    }
 
-  const users = User.find().skip(skip).limit(limit);
-  const totalUsers = users.length;
-  res.status(200).send.json({
-    totalPage: Math.ceil(totalUsers / limit),
-    data: users,
-  });
-});
+    visited[ch] = right;
+
+    let currentLength = right - left + 1;
+    if (currentLength > maxLength) {
+      maxLength = currentLength;
+    }
+  }
+
+  return maxLength;
+}
+
+console.log(lengthOfLongestSubstring('abcabcbb'));

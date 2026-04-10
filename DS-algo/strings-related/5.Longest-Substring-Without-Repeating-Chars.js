@@ -1,5 +1,8 @@
-// The idea is to find length of longest substring with distinct characters starting from every index
-// and maximum of all such lengths will be our answer.
+/**
+ *
+ * @param {*} str
+ * @returns
+ */
 
 function lengthOfLongestSubstring(str) {
   let visited = {};
