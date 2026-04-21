@@ -1,31 +1,26 @@
-let btn = document.querySelector('.Increment_btn');
-let btnPress = document.querySelector('.Increment_pressed');
-let count = document.querySelector('.Increment_count');
-
-let pressedCount = 0;
-let triggeredCount = 0;
-const start = new Date().getTime();
-
-var myThrotteled = (cb, d) => {
-  let last = 0;
-
-  return (...args) => {
-    let now = new Date().getTime();
-    if (now - last < d) return;
-    last = now;
-    return cb(...args);
+function throttle(func, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    func(...args);
   };
-};
+}
 
-var throttlled = myThrotteled(() => {
-  triggeredCount += 1;
-  count.innerHTML = triggeredCount;
-}, 1000);
+function logMessage(message) {
+  console.log(message);
+}
 
-btn.addEventListener('click', () => {
-  btnPress.innerHTML = pressedCount++;
-  const now = new Date().getTime();
-  const seconds = (now - start) / 1000;
-  console.log(seconds.toFixed());
-  throttlled();
-});
+const throttledLogMessage = throttle(logMessage, 1000);
+
+// Logs 'Hello'
+throttledLogMessage('Hello');
+
+// Doesn't log anything
+throttledLogMessage('World');
+
+// Logs 'Delayed' after 2 seconds
+setTimeout(() => throttledLogMessage('Delayed'), 2000);

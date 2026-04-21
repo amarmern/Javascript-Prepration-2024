@@ -1,3 +1,4 @@
+/// second level....
 console.log('Start');
 setTimeout(() => console.log('Timeout'), 0);
 async function test() {
@@ -6,12 +7,17 @@ async function test() {
   console.log('After Await');
 }
 test();
-function test1() {
-  console.log('Inside sync function');
-}
-test1();
 new Promise((resolve) => {
   console.log('Promise');
   resolve();
 }).then(() => console.log('Promise Then'));
 console.log('End');
+/*
+Start
+Inside Async
+Promise
+End
+After Await
+Promise Then
+Timeout
+*/
