@@ -960,4 +960,23 @@ function longestCommonPrefix(strs) {
 console.log(longestCommonPrefix(["flower","flow","flight"])); // "fl"
 console.log(longestCommonPrefix(["dog","racecar","car"]));    // ""
 
+
+let input = {
+  a: [1, 2],
+  b: [2, 3],
+  c: [3]
+};
+
+let output = {};
+
+for (let key in input) {
+  for (let val of input[key]) {
+    if (!output[val]) {
+      output[val] = [];
+    }
+    output[val].push(key);
+  }
+}
+
+console.log(output);
 */

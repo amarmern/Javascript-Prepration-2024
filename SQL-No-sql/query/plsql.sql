@@ -78,15 +78,6 @@ group by emp_id
 having count(*) >1
 
 ## delete duplicate data
-delete from employee
-where emp_id in (
-    select emp_id
-    from (
-        select emp_id, row_number() over (partition by fname order by emp_id) as rn
-        from employee
-    ) t
-    where t.rn > 1
-);
 
 DELETE FROM users
 WHERE id NOT IN (
