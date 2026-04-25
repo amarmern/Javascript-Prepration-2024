@@ -960,7 +960,7 @@ function longestCommonPrefix(strs) {
 console.log(longestCommonPrefix(["flower","flow","flight"])); // "fl"
 console.log(longestCommonPrefix(["dog","racecar","car"]));    // ""
 
-
+//TCS
 let input = {
   a: [1, 2],
   b: [2, 3],
