@@ -7,11 +7,11 @@ let input = {
 let obj = {};
 
 for (let key in input) {
-  for (let item of input[key]) {
-    if (!obj[item]) {
-      obj[item] = [];
+  for (let value of input[key]) {
+    if (!obj[value]) {
+      obj[value] = [];
     }
-    obj[item].push(key);
+    obj[value].push(key);
   }
 }
 
