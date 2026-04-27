@@ -979,4 +979,5 @@ for (let key in input) {
 }
 
 console.log(output);
+//{ '1': [ 'a' ], '2': [ 'a', 'b' ], '3': [ 'b', 'c' ] }
 */

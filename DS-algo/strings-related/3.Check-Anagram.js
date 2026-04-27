@@ -20,6 +20,23 @@ function isAnagram(a, b) {
   return true;
 }
 
+// second way..
+function isAnagram(a, b) {
+  let obj = {};
+  if (a.length !== b.length) return false;
+
+  for (let char of a) {
+    obj[char] = (obj[char] || 0) + 1;
+  }
+  for (let char of b) {
+    if (!obj[char]) {
+      return false;
+    }
+    obj[char]--;
+  }
+  return true;
+}
+
 console.log(isAnagram('listen', 'silent'));
 
 //...Anagram..........
