@@ -23,8 +23,8 @@ function binarySearch(arr, searchElement) {
       // element found at mid
       return mid; // no need to process further
     }
-    if (searchElement < arr[mid]) {
-      // element might be in first half
+    if (arr[mid] > searchElement) {
+      // element might be in second half
       right = mid - 1; // right is mid - 1 because we know that mid is not correct element
     } else {
       // element might be in second half

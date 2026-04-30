@@ -98,3 +98,10 @@ for (let i = 0; i <= salary.length; i++) {
   }
 }
 console.log(minSal);
+
+console.log(sumArray([1, 2, 3, 4, 5], 0));
+function sumArray(arr, index = 0) {
+  if (arr.length === index) return 0;
+
+  return arr[index] + sumArray(arr, index + 1);
+}
