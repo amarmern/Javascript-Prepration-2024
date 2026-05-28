@@ -26,15 +26,18 @@ console.log(secondLargestNumber(array));
 
 console.log(secondLargest([3, 10, 7, 5, 12, 11, 25, 2]));
 
-function secondLargest(arr) {
-  let first = 0,
-    second = 0;
+let arr = [10, 20, 5, 15, 20];
 
-  for (let num of arr) {
-    if (num > first) {
-      second = first;
-      first = num;
-    }
+let first = -Infinity;
+let second = -Infinity;
+
+for (let item of arr) {
+  if (item > first) {
+    second = first;
+    first = item;
+  } else if (item > second && item < first) {
+    second = item;
   }
-  return second;
 }
+
+console.log(second);
