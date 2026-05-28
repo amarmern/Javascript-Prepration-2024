@@ -1,17 +1,13 @@
-console.log('Start');
-setTimeout(() => console.log('Timeout'), 0);
-async function test() {
-  console.log('Inside Async');
-  await Promise.resolve();
-  console.log('After Await');
+console.log(longestCommonPrefix(['flower', 'flow', 'flight'])); // "fl"
+
+function longestCommonPrefix(arr) {
+  let prefix = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    while (arr[i].indexOf(prefix) !== 0) {
+      prefix = prefix.substring(0, prefix.length - 1);
+      if (prefix === '') return '';
+    }
+  }
+
+  return prefix;
 }
-test();
-function test1() {
-  console.log('Inside sync function');
-}
-test1();
-new Promise((resolve) => {
-  console.log('Promise');
-  resolve();
-}).then(() => console.log('Promise Then'));
-console.log('End');
