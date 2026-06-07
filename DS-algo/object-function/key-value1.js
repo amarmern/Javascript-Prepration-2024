@@ -16,3 +16,4 @@ for (let key in input) {
 }
 
 console.log(obj);
+//{ '1': [ 'a' ], '2': [ 'a', 'b' ], '3': [ 'b', 'c' ] }

@@ -1,0 +1,1 @@
+let string = '42';

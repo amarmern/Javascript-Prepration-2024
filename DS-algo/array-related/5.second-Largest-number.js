@@ -28,8 +28,8 @@ console.log(secondLargest([3, 10, 7, 5, 12, 11, 25, 2]));
 
 let arr = [10, 20, 5, 15, 20];
 
-let first = -Infinity;
-let second = -Infinity;
+let first = 0;
+let second = 0;
 
 for (let item of arr) {
   if (item > first) {

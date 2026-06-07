@@ -1,13 +1,14 @@
-console.log(longestCommonPrefix(['flower', 'flow', 'flight'])); // "fl"
+console.log(isValid('[]'));
+//second way
+function isValid(s) {
+  const stack = [];
 
-function longestCommonPrefix(arr) {
-  let prefix = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    while (arr[i].indexOf(prefix) !== 0) {
-      prefix = prefix.substring(0, prefix.length - 1);
-      if (prefix === '') return '';
-    }
+  for (let ch of s) {
+    if (ch === '(') stack.push(')');
+    else if (ch === '{') stack.push('}');
+    else if (ch === '[') stack.push(']');
+    else if (stack.pop() !== ch) return false;
   }
 
-  return prefix;
+  return stack.length === 0;
 }
