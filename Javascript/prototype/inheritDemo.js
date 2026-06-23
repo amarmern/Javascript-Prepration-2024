@@ -12,8 +12,8 @@ function Student(fName, lName, grade) {
   this.grade = grade;
 }
 
-Student.prototype = Person;
-Student.prototype.constructor = Student;
+Student.prototype = Object.create(Person.prototype);
+//Student.prototype.constructor = Student;
 
 let student1 = new Student('Adit', 'kumari', 'A');
 let student2 = new Student('Shivam', 'kumar', 'A');

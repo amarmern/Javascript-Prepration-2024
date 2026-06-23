@@ -18,7 +18,10 @@ b.val2.val3 = 70;
 
 console.log(a);
 console.log(b);
-
+const c = JSON.parse(JSON.stringify(a));
+//structuredClone(a);// new way to deep clone
+c.val1 = 80;
+c.val2.val3 = 90;
 /*
 Implement whether a given string containing parentheses, square brackets, and curly braces is balanced.
 

@@ -40,7 +40,7 @@ function lowestAndHighest(prices) {
 }
 
 console.log(lowestAndHighest([4, 2, 5, 1, 7, 0]));
-// { min: 1, max: 7 }
+// { buy: 1, sell: 7, maxProfit: 6 }
 
 // but lowest should be before highest
 function maxProfitDetails(price) {
