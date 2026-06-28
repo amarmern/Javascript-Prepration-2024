@@ -152,6 +152,8 @@ db.employee.aggregate([
 SELECT COUNT(*) AS total_employees
 FROM employee;
 
+## in mongodb
+db.employee.countDocuments()
 
  ## employee with highest salary
 
@@ -166,6 +168,14 @@ WHERE salary < (SELECT MAX(salary) FROM employee));
 select max(salary) from employee
 where salary < (select max(salary) from employee)
 
+//using limit and order by
+SELECT * FROM employee
+ORDER BY salary DESC
+OFFSET 1 LIMIT 1;
+
+# mongodb
+db.employee.find().sort({salary: -1}).skip(1).limit(1)
+
 ## average salary of employee in each department
 
 SELECT dept, AVG(salary) AS avg_salary
@@ -175,7 +185,7 @@ GROUP BY dept;
 ## total salary of employee in each department
 select dept, sum(salary) from employee group by dept;
 
-## total salary of employee in each department with more than 2 employee
+## total salary of employee in each department having more than 2 employee
 SELECT dept, SUM(salary) AS total_salary
 FROM employee
 GROUP BY dept

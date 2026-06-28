@@ -1,6 +1,6 @@
 const rateLimitStore = {};
 const WINDOW_SIZE = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 5;
+const MAX_REQUESTS = 100; // 100 requests per minute
 
 const rateLimiter = (req, res, next) => {
   const ip = req.ip;
